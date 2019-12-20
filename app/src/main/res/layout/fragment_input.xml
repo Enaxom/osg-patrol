@@ -44,6 +44,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:layout_alignParentEnd="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/medium_text"/>
@@ -89,6 +91,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text"/>
@@ -117,75 +121,6 @@
 
         </LinearLayout>
 
-        <!--
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:orientation="vertical"
-            android:descendantFocusability="beforeDescendants"
-            android:focusableInTouchMode="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtTeam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text" />
-
-                <Spinner
-                    android:id="@+id/spinTeam"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/spinner" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text" />
-
-                <Spinner
-                    android:id="@+id/spinUser"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/spinner" />
-
-            </LinearLayout>
-        </LinearLayout>
--->
         <LinearLayout
             android:id="@+id/address"
             android:layout_width="match_parent"
@@ -241,6 +176,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text"/>
@@ -288,6 +224,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text"/>
@@ -336,6 +273,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
                         android:textColor="@color/black"
+                        android:gravity="end"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
 
@@ -383,6 +321,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -430,6 +369,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -443,7 +383,7 @@
 
                     <EditText
                         android:id="@+id/etPillar"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:textColorHint="#00FFFFFF"
                         android:background="@drawable/spinner"
@@ -482,6 +422,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -495,7 +436,7 @@
 
                     <Spinner
                         android:id="@+id/spinSpaceCat"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginStart="8dp"
@@ -530,6 +471,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -543,7 +485,7 @@
 
                     <Spinner
                         android:id="@+id/spinSpace"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginStart="8dp"
@@ -614,6 +556,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -627,7 +570,7 @@
 
                     <Spinner
                         android:id="@+id/spinNature"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginStart="8dp"
@@ -661,6 +604,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -674,7 +618,7 @@
 
                     <Spinner
                         android:id="@+id/spinFrequency"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginStart="8dp"
@@ -708,6 +652,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -721,7 +666,7 @@
 
                     <Spinner
                         android:id="@+id/spinMaterial"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_gravity="top"
                         android:layout_marginStart="8dp"
@@ -755,6 +700,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -768,7 +714,7 @@
 
                     <EditText
                         android:id="@+id/etCode"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:textColorHint="#00FFFFFF"
                         android:background="@drawable/spinner"
@@ -805,6 +751,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -824,7 +771,7 @@
 
                         <EditText
                             android:id="@+id/etDateStart"
-                            android:layout_width="wrap_content"
+                            android:layout_width="70dp"
                             android:layout_height="30dp"
                             android:hint="@string/dateFormat"
                             android:focusable="false"
@@ -840,7 +787,7 @@
 
                         <EditText
                             android:id="@+id/etTimeStart"
-                            android:layout_width="wrap_content"
+                            android:layout_width="70dp"
                             android:layout_height="30dp"
                             android:hint="@string/dateFormat"
                             android:focusable="false"
@@ -879,6 +826,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="10dp"
+                        android:gravity="end"
                         android:textColor="@color/black"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/medium_text" />
@@ -898,7 +846,7 @@
 
                         <EditText
                             android:id="@+id/etDateEnd"
-                            android:layout_width="wrap_content"
+                            android:layout_width="70dp"
                             android:layout_height="30dp"
                             android:hint="@string/dateFormat"
                             android:focusable="false"
@@ -913,7 +861,7 @@
 
                         <EditText
                             android:id="@+id/etTimeEnd"
-                            android:layout_width="wrap_content"
+                            android:layout_width="70dp"
                             android:layout_height="30dp"
                             android:hint="@string/dateFormat"
                             android:focusable="false"
@@ -1279,6 +1227,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="top"
+                        android:gravity="end"
                         android:textSize="@dimen/medium_text"/>
 
                 </RelativeLayout>
@@ -1290,7 +1239,7 @@
 
                     <Spinner
                         android:id="@+id/spinDetail1"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_alignParentStart="true"
                         android:visibility="invisible"
@@ -1326,6 +1275,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="top"
+                        android:gravity="end"
                         android:textSize="@dimen/medium_text"/>
 
                 </RelativeLayout>
@@ -1337,7 +1287,7 @@
 
                     <Spinner
                         android:id="@+id/spinDetail2"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_alignParentStart="true"
                         android:visibility="invisible"
@@ -1373,6 +1323,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="top"
+                        android:gravity="end"
                         android:textSize="@dimen/medium_text" />
 
                 </RelativeLayout>
@@ -1384,7 +1335,7 @@
 
                     <Spinner
                         android:id="@+id/spinDetail3"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_alignParentStart="true"
                         android:visibility="invisible"
@@ -1420,6 +1371,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="top"
+                        android:gravity="end"
                         android:textSize="@dimen/medium_text" />
 
                 </RelativeLayout>
@@ -1431,7 +1383,7 @@
 
                     <Spinner
                         android:id="@+id/spinDetail4"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_alignParentStart="true"
                         android:visibility="invisible"
@@ -1467,6 +1419,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="top"
+                        android:gravity="end"
                         android:textSize="@dimen/medium_text" />
 
                 </RelativeLayout>
@@ -1478,7 +1431,7 @@
 
                     <Spinner
                         android:id="@+id/spinDetail5"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:background="@drawable/spinner"
                         android:visibility="invisible"
@@ -1514,6 +1467,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="top"
+                        android:gravity="end"
                         android:textSize="@dimen/medium_text" />
 
                 </RelativeLayout>
@@ -1525,7 +1479,7 @@
 
                     <Spinner
                         android:id="@+id/spinDetail6"
-                        android:layout_width="210dp"
+                        android:layout_width="150dp"
                         android:layout_height="30dp"
                         android:layout_alignParentStart="true"
                         android:visibility="invisible"
@@ -1558,7 +1512,7 @@
                 <Button
                     android:id="@+id/btnSave"
                     android:background="@drawable/blue_button"
-                    android:layout_width="250dp"
+                    android:layout_width="160dp"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_large_text"/>
@@ -1574,7 +1528,7 @@
                 <Button
                     android:id="@+id/btnClear"
                     android:background="@drawable/gray_button"
-                    android:layout_width="250dp"
+                    android:layout_width="160dp"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -1602,7 +1556,7 @@
                 <Button
                     android:id="@+id/btnSaveEdit"
                     android:background="@drawable/blue_button"
-                    android:layout_width="250dp"
+                    android:layout_width="160dp"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_large_text"/>
@@ -1618,7 +1572,7 @@
                 <Button
                     android:id="@+id/btnCancelEdit"
                     android:background="@drawable/gray_button"
-                    android:layout_width="250dp"
+                    android:layout_width="160dp"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
