@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="60dp"
     tools:context=".InputFragment"
+    android:tag="smartphone"
     android:id="@+id/inputScrollView" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -392,6 +393,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
                         android:imeOptions="actionDone"
                         android:layout_alignParentStart="true"
                         android:inputType="textImeMultiLine"/>
@@ -722,6 +724,7 @@
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
                         android:imeOptions="actionDone"
                         android:layout_alignParentStart="true"
                         android:inputType="textImeMultiLine"/>
@@ -745,7 +748,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/txtStartDate"
+                        android:id="@+id/txtStartDate2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -763,43 +766,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_alignParentStart="true">
-
-                        <EditText
-                            android:id="@+id/etDateStart"
-                            android:layout_width="70dp"
-                            android:layout_height="30dp"
-                            android:hint="@string/dateFormat"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textColorHint="#00FFFFFF"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/spinner"
-                            android:maxLength="100"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginStart="8dp"
-                            />
-
-                        <EditText
-                            android:id="@+id/etTimeStart"
-                            android:layout_width="70dp"
-                            android:layout_height="30dp"
-                            android:hint="@string/dateFormat"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textColorHint="#00FFFFFF"
-                            android:background="@drawable/spinner"
-                            android:maxLength="100"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginStart="8dp"/>
-
-                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/etDateStart"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColorHint="#00FFFFFF"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"/>
 
                 </RelativeLayout>
 
@@ -820,7 +799,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/txtEndDate"
+                        android:id="@+id/txtStartTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -838,42 +817,121 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_alignParentStart="true">
+                    <EditText
+                        android:id="@+id/etTimeStart"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColorHint="#00FFFFFF"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"/>
 
-                        <EditText
-                            android:id="@+id/etDateEnd"
-                            android:layout_width="70dp"
-                            android:layout_height="30dp"
-                            android:hint="@string/dateFormat"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textColorHint="#00FFFFFF"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/spinner"
-                            android:maxLength="100"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginStart="8dp" />
+                </RelativeLayout>
 
-                        <EditText
-                            android:id="@+id/etTimeEnd"
-                            android:layout_width="70dp"
-                            android:layout_height="30dp"
-                            android:hint="@string/dateFormat"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textColorHint="#00FFFFFF"
-                            android:background="@drawable/spinner"
-                            android:maxLength="100"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginStart="8dp"/>
+            </LinearLayout>
 
-                    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtEndDate2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etDateEnd"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColorHint="#00FFFFFF"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtEndTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etTimeEnd"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:textColorHint="#00FFFFFF"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"/>
 
                 </RelativeLayout>
 
@@ -909,7 +967,7 @@
             android:id="@+id/serviceLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/service"
@@ -918,12 +976,12 @@
             android:layout_marginEnd="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
                 android:layout_gravity="center"
                 android:background="@drawable/grey_border">
 
@@ -950,11 +1008,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="32dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:background="@drawable/grey_border">
@@ -1015,8 +1074,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/intervenants"
-            android:layout_marginStart="38dp"
-            android:layout_marginEnd="38dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="32dp"
             android:layout_gravity="center"
             android:background="@drawable/grey_border">
@@ -1112,8 +1171,8 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="38dp"
-            android:layout_marginEnd="38dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="32dp"
             android:layout_gravity="center" >
 
@@ -1499,7 +1558,7 @@
             android:id="@+id/layoutButtonsInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/layoutDetail"
             android:paddingBottom="20dp">
 
@@ -1507,12 +1566,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btnSave"
                     android:background="@drawable/blue_button"
-                    android:layout_width="160dp"
+                    android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/medium_large_text"/>
@@ -1523,12 +1585,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btnClear"
                     android:background="@drawable/gray_button"
-                    android:layout_width="160dp"
+                    android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -1543,7 +1607,7 @@
             android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/layoutDetail"
             android:paddingBottom="20dp">
 
@@ -1551,14 +1615,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btnSaveEdit"
                     android:background="@drawable/blue_button"
-                    android:layout_width="160dp"
+                    android:layout_width="match_parent"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textSize="@dimen/medium_large_text"/>
 
             </LinearLayout>
@@ -1567,12 +1634,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btnCancelEdit"
                     android:background="@drawable/gray_button"
-                    android:layout_width="160dp"
+                    android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

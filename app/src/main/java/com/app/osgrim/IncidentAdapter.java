@@ -2,6 +2,7 @@ package com.app.osgrim;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,8 +75,13 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
 		View view = LayoutInflater.from(context).inflate(R.layout.pop_up_incident, null, true);
 		int width = context.getResources().getDisplayMetrics().widthPixels;
 		int height = context.getResources().getDisplayMetrics().heightPixels;
-		int newWidth = (width > height) ? height/2 + height/4 : width/2 + width/4;
-		final PopupWindow pw = new PopupWindow(view, newWidth, newWidth/2);
+		int newWidth = (width > height) ? height/2 + height/3 : width/2 + width/3;
+		double ratio = (double) height/width;
+		int newHeight = (ratio < 1.5 || height < 1000) ? newWidth - newWidth/4 : newWidth/2;
+		if(((MainActivity) context).inputFragment.getTagStr().equals("tablet"))
+			newHeight -= newWidth/5;
+
+		final PopupWindow pw = new PopupWindow(view, newWidth, newHeight);
 		Button btnMinus = view.findViewById(R.id.btnMinus);
 		Button btnPlus = view.findViewById(R.id.btnPlus);
 		Button btnClose = view.findViewById(R.id.btnClose);

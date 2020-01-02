@@ -635,6 +635,10 @@ public class MainActivity extends AppCompatActivity {
 			this.labels.put("code", jObj.getString("code"));
 			this.labels.put("startDate", jObj.getString("startDate"));
 			this.labels.put("endDate", jObj.getString("endDate"));
+			this.labels.put("startDate2", jObj.getString("startDate2"));
+			this.labels.put("endDate2", jObj.getString("endDate2"));
+			this.labels.put("startTime", jObj.getString("startTime"));
+			this.labels.put("endTime", jObj.getString("endTime"));
 			this.labels.put("services", jObj.getString("services"));
 			this.labels.put("teams", jObj.getString("teams"));
 			this.labels.put("participant", jObj.getString("participant"));

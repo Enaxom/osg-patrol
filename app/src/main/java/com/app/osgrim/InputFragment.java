@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -885,7 +886,7 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 
 	private void initializeText() {
 		TextView txtTeam, txtUser, txtAddress, txtZone, txtBuild, txtLvl, txtCanton, txtPillar, txtSpaceCat, txtSpace;
-		TextView txtMaintenance, txtNature, txtFrequency, txtMaterial, txtCode, txtStartDate, txtEndDate;
+		TextView txtMaintenance, txtNature, txtFrequency, txtMaterial, txtCode, txtStartDate, txtEndDate, txtStartDate2, txtEndDate2, txtStartTime, txtEndTime;
 		TextView txtServices, txtService1, txtService2;
 		TextView txtIntervenants, txtTeams, txtInters;
 		TextView txtIncidents, txtIncident, txtComment;
@@ -908,6 +909,10 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		txtCode = inputView.findViewById(R.id.txtCode);
 		txtStartDate = inputView.findViewById(R.id.txtStartDate);
 		txtEndDate = inputView.findViewById(R.id.txtEndDate);
+		txtStartDate2 = inputView.findViewById(R.id.txtStartDate2);
+		txtEndDate2 = inputView.findViewById(R.id.txtEndDate2);
+		txtStartTime = inputView.findViewById(R.id.txtStartTime);
+		txtEndTime = inputView.findViewById(R.id.txtEndTime);
 		txtServices = inputView.findViewById(R.id.txtServices);
 		txtService1 = inputView.findViewById(R.id.txtService1);
 		txtService2 = inputView.findViewById(R.id.txtService2);
@@ -934,8 +939,6 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		txtFrequency.setText(mainAct.labels.get("frequency"));
 		txtMaterial.setText(mainAct.labels.get("material"));
 		txtCode.setText(mainAct.labels.get("code"));
-		txtStartDate.setText(mainAct.labels.get("startDate"));
-		txtEndDate.setText(mainAct.labels.get("endDate"));
 		txtServices.setText(mainAct.labels.get("services"));
 		txtIntervenants.setText(mainAct.labels.get("participant"));
 		txtInters.setText(mainAct.labels.get("participant"));
@@ -945,6 +948,17 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		txtComment.setText(mainAct.labels.get("comment"));
 		txtDetails.setText(mainAct.labels.get("details"));
 
+		// String tag = inputView.getTag().toString();
+		if (!getTagStr().equals("smartphone")) {
+			txtStartDate.setText(mainAct.labels.get("startDate"));
+			txtEndDate.setText(mainAct.labels.get("endDate"));
+		} else {
+			txtStartDate2.setText(mainAct.labels.get("startDate2"));
+			txtEndDate2.setText(mainAct.labels.get("endDate2"));
+			txtStartTime.setText(mainAct.labels.get("startTime"));
+			txtEndTime.setText(mainAct.labels.get("endTime"));
+		}
+
 		btnSave.setText(mainAct.labels.get("save"));
 		btnClear.setText(mainAct.messages.get("clear"));
 
@@ -953,6 +967,10 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 
 		txtService1.setText(mainAct.serviceCats.get(0).getName());
 		txtService2.setText(mainAct.serviceCats.get(1).getName());
+	}
+
+	protected String getTagStr() {
+		return inputView.getTag().toString();
 	}
 
 	@Override
