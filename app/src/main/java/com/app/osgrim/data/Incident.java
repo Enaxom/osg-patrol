@@ -7,10 +7,8 @@ package com.app.osgrim.data;
  * @author Morgane Cadeau
  * @version 1.0
  */
-public class Incident {
+public class Incident extends Element {
 
-    private int id;
-    private String name;
     private boolean isSelected;
     private int nbrIncident;
 
@@ -25,60 +23,42 @@ public class Incident {
     }
 
     Incident(int id, String name, boolean isSelected, int nbrIncident) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
         this.isSelected = isSelected;
         this.nbrIncident = nbrIncident;
     }
 
     /**
-     * Permits to get the incident id.
-     * Permet de récupérer l'id de l'incident.
-     * @return The canton id. L'id du canton.
+     * Set the value of isSelected. Fixe la veleur de isSelected.
+     * @param isSelected True if the incident is selected in the report. False if not. Vrai si
+     *                   l'incident est sélectionné dans le rapport. Faux sinon.
      */
-    public int getId() {
-        return this.id;
-    }
-
-    /**
-     * Defines a new incident id.
-     * Définit un nouveau id d'incident.
-     * @param id The incident id. L'id de l'incident.
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * Permits to get the incident name.
-     * Permet de récupérer le nom de l'incident.
-     * @return The canton name. Le nom du canton.
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Defines a new incident name.
-     * Définit un nouveau nom de l'incident.
-     * @param name The incident name to set. Le nom de l'incident à appliquer.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setSelected(boolean isSelected) {
         this.isSelected = isSelected;
     }
 
+    /**
+     * Get the value of isSelected. Renvoie la valeur de isSelected.
+     * @return True if the incident is selected. False if not. Vrai si l'incident est sélectionné
+     * . Faux sinon.
+     */
     public boolean isSelected() {
         return this.isSelected;
     }
 
+    /**
+     * Set the number of incidents when it's selected. Fixe le nombre d'incidents ci celui-ci est
+     * sélectionné.
+     * @param nbrIncident The number of incidents. Le nombre d'anomalies.
+     */
     public void setNbrIncident(int nbrIncident) {
         this.nbrIncident = nbrIncident;
     }
 
+    /**
+     * Get the number of incidents. Renvoie le nombre d'anomalies liées à l'incident.
+     * @return The number of incidents. Le nombre d'anomalies.
+     */
     public int getNbrIncident() {
         return this.nbrIncident;
     }

@@ -1,7 +1,5 @@
 package com.app.osgrim.data;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * The User class define an Osgrim user.
  * La classe User (Utilisateur) définit un utilisateur Osgrim.
@@ -9,9 +7,8 @@ import org.jetbrains.annotations.NotNull;
  * @author Morgane Cadeau
  * @version 1.0
  */
-public class User {
+public class User extends Element {
 
-    private int id;
     private String lname, fname;
 
     /**
@@ -22,27 +19,9 @@ public class User {
      * @param fname The user firstname. Le prénom de l'utilisateur.
      */
     public User(int id, String lname, String fname) {
-        this.id = id;
+        super(id, fname + " " + lname);
         this.lname = lname;
         this.fname = fname;
-    }
-
-    /**
-     * Permits to get the user id.
-     * Permet de récupérer l'id de l'utilisateur.
-     * @return The user id. L'id de l'utilisateur.
-     */
-    public int getId() {
-        return this.id;
-    }
-
-    /**
-     * Defines a user id.
-     * Définit un id d'utilisateur.
-     * @param id The user id. L'id de l'utilisateur.
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**
@@ -79,11 +58,5 @@ public class User {
      */
     public void setFname(String fname) {
         this.fname = fname;
-    }
-
-    @Override
-    @NotNull
-    public String toString() {
-        return lname + " " + fname;
     }
 }

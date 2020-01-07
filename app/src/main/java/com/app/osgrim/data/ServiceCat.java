@@ -10,10 +10,8 @@ import java.util.List;
  * @author Morgane Cadeau
  * @version 1.0
  */
-public class ServiceCat {
+public class ServiceCat extends Element {
 
-    private int id;
-    private String name;
     private List<Service> services;
 
     /**
@@ -23,46 +21,9 @@ public class ServiceCat {
      * @param name The serviceCat name. Le nom de la catégorie de service.
      */
     public ServiceCat(int id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
         // The services list is initialized. La liste des services est initialisée.
         this.services = new ArrayList<>();
-    }
-
-    /**
-     * Permits to get the serviceCat id.
-     * Permet de récupérer l'id de la catégorie de service.
-     * @return The serviceCat id. L'id de la catégorie de service.
-     */
-    public int getId() {
-        return this.id;
-    }
-
-    /**
-     * Defines a new serviceCat id.
-     * Définit un nouveau id de catégorie de service.
-     * @param id The serviceCat id. L'id de la catégorie de service.
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * Permits to get the serviceCat name.
-     * Permet de récupérer le nom de la catégorie du service.
-     * @return The serviceCat name. Le nom de la catégorie de service.
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Defines a new serviceCat name.
-     * Définit un nouveau nom de catégorie de service.
-     * @param name The serviceCat name to set. Le nom de la catégorie de service à appliquer.
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
