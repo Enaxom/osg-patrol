@@ -29,5 +29,6 @@
 	"validImport" : "Les données d'Osgrim ont bien été importées. Vous pouvez désormais saisir un rapport.",
 	"validExport" : "Les données saisies sur l'appareil ont bien été exportées vers l'ordinateur. Pour les récupérer dans Osgrim, merci d'importer les données depuis le logiciel.",
 	"warningImport" : "Attention ! L'importation de données effacera les données saisies. Êtes vous sûr de continuer ?",
-	"errorImport" : "L'importation des données n'a pas pu se réaliser. Assurez-vous de bien avoir exporté les données depuis le logiciel Osgrim avant d'importer les données depuis l'application."
+	"errorImport" : "L'importation des données n'a pas pu se réaliser. Assurez-vous de bien avoir exporté les données depuis le logiciel Osgrim avant d'importer les données depuis l'application.",
+	"noData" : "Il n'y a aucun rapport à exporter."
 }
