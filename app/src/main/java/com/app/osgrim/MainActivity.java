@@ -18,6 +18,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.app.osgrim.data.Building;
@@ -598,7 +599,7 @@ public class MainActivity extends AppCompatActivity {
 
 		try {
 			// Get the principal JSON object
-			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", false));
+			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", true));
 
 			// Check if we have to display the space category and space spinners
 			// Check si on doit afficher la liste déroulante de catégorie de local et de local
@@ -858,7 +859,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void getLabels() {
 		this.labels = new HashMap<>();
 		try {
-			JSONObject jObj = new JSONObject(readJSON("label.json", false));
+			JSONObject jObj = new JSONObject(readJSON("label.json", true));
 
 			this.labels.put("team", jObj.getString("team"));
 			this.labels.put("user", jObj.getString("user"));
@@ -898,9 +899,9 @@ public class MainActivity extends AppCompatActivity {
 
 	/**
 	 * Read a json file named name.json in the download folder of the device and return the
-	 * string content of the file. <br>
+	 * string content of the file. After the data recuperation, the file is deleted. <br>
 	 * Lit un fichier json appelé name.json dans le dossier download de l'appareil et retourne le
-	 * contenu du fichier en chaîne de caractère.
+	 * contenu du fichier en chaîne de caractère. Après la récupération des données, le fichier est supprimé.
 	 * @param name The file name. <br> Le nom du fichier.
 	 * @param isAsset True if the file is located in the assets, false if it's in the download
 	 *                   folder. <br> Vrai si le fichier est localisé dans les assets, faux si il est
@@ -920,6 +921,10 @@ public class MainActivity extends AppCompatActivity {
 			int res = is.read(buffer);
 			is.close();
 			json = new String(buffer, StandardCharsets.UTF_8);
+
+			if (!isAsset)
+				file.delete();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
@@ -981,7 +986,12 @@ public class MainActivity extends AppCompatActivity {
 		if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
 			requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 		} else {
+			ProgressBar progressBar = findViewById(R.id.progressBarImport);
 			try {
+				progressBar.setVisibility(View.VISIBLE);
+
+				// TODO Finish progress bar
+				wait(5000);
 				getData();
 				getLabels();
 
@@ -993,7 +1003,10 @@ public class MainActivity extends AppCompatActivity {
 				this.recreate();
 
 				this.newImportData = true;
+
+				progressBar.setVisibility(View.INVISIBLE);
 			} catch (Exception e) {
+				progressBar.setVisibility(View.INVISIBLE);
 				makeAlertInfo(this.messages.get("errorImport"));
 			}
 		}
