@@ -8,12 +8,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -599,7 +603,7 @@ public class MainActivity extends AppCompatActivity {
 
 		try {
 			// Get the principal JSON object
-			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", true));
+			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", false));
 
 			// Check if we have to display the space category and space spinners
 			// Check si on doit afficher la liste déroulante de catégorie de local et de local
@@ -859,7 +863,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void getLabels() {
 		this.labels = new HashMap<>();
 		try {
-			JSONObject jObj = new JSONObject(readJSON("label.json", true));
+			JSONObject jObj = new JSONObject(readJSON("label.json", false));
 
 			this.labels.put("team", jObj.getString("team"));
 			this.labels.put("user", jObj.getString("user"));
@@ -912,7 +916,6 @@ public class MainActivity extends AppCompatActivity {
 	protected String readJSON(String name, boolean isAsset) {
 		String json;
 		File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath() + File.separator + name);
-
 		try {
 			// Read from asset or download
 			InputStream is = isAsset ? getAssets().open(name) : new FileInputStream(file);
@@ -922,8 +925,9 @@ public class MainActivity extends AppCompatActivity {
 			is.close();
 			json = new String(buffer, StandardCharsets.UTF_8);
 
-			if (!isAsset)
-				file.delete();
+			if (!isAsset) {
+				boolean b = file.delete();
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -986,12 +990,8 @@ public class MainActivity extends AppCompatActivity {
 		if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
 			requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 		} else {
-			ProgressBar progressBar = findViewById(R.id.progressBarImport);
 			try {
-				progressBar.setVisibility(View.VISIBLE);
-
-				// TODO Finish progress bar
-				wait(5000);
+				// TODO loading popup
 				getData();
 				getLabels();
 
@@ -1004,9 +1004,7 @@ public class MainActivity extends AppCompatActivity {
 
 				this.newImportData = true;
 
-				progressBar.setVisibility(View.INVISIBLE);
 			} catch (Exception e) {
-				progressBar.setVisibility(View.INVISIBLE);
 				makeAlertInfo(this.messages.get("errorImport"));
 			}
 		}
