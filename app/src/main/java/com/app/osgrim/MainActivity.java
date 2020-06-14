@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -25,22 +27,32 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.app.osgrim.data.Alert;
+import com.app.osgrim.data.Bilan;
+import com.app.osgrim.data.BilanCir;
+import com.app.osgrim.data.BilanFonc;
+import com.app.osgrim.data.BilanLes;
 import com.app.osgrim.data.Building;
 import com.app.osgrim.data.Canton;
+import com.app.osgrim.data.Destination;
 import com.app.osgrim.data.Detail;
 import com.app.osgrim.data.Frequency;
 import com.app.osgrim.data.Incident;
+import com.app.osgrim.data.Lesion;
 import com.app.osgrim.data.Level;
 import com.app.osgrim.data.Material;
 import com.app.osgrim.data.Nature;
+import com.app.osgrim.data.QualityRCP;
 import com.app.osgrim.data.Report;
 import com.app.osgrim.data.Service;
 import com.app.osgrim.data.ServiceCat;
 import com.app.osgrim.data.Space;
 import com.app.osgrim.data.SpaceCat;
 import com.app.osgrim.data.Team;
+import com.app.osgrim.data.Transport;
 import com.app.osgrim.data.User;
 import com.app.osgrim.data.Zone;
+import com.app.osgrim.data.State;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -189,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
 	 */
 	protected ReportAdapter reportAdapter;
 
+	protected BilanAdapter bilanAdapter;
+
 	/**
 	 * The tabLayout which contains the three tabs of the application. <br>
 	 * Le tabLayout qui contient les trois onglets de l'application.
@@ -201,11 +215,13 @@ public class MainActivity extends AppCompatActivity {
 	 */
 	protected RecyclerView listReports;
 
+	protected RecyclerView listBilans;
+
 	/**
 	 * A BooleanVariable that has a handler when it changes of value. <br>
 	 * Une BooleanVariable qui est associée à un évènement quand il change de valeur.
 	 */
-	protected BooleanVariable needClear;
+	protected BooleanVariable needClear, needClearBilan;
 
 	/**
 	 * Object that allows us to save data when the user quit or leave the app. <br>
@@ -250,6 +266,32 @@ public class MainActivity extends AppCompatActivity {
 	 */
 	protected boolean isLocalDisplay;
 
+	protected Context context = this;
+
+	protected List<Bilan> bilanCirList;
+
+	protected List<Bilan> bilanFoncList;
+
+	protected List<Bilan> bilanLesList;
+
+	protected List<State> states;
+
+	protected List<Transport> transports;
+
+	protected List<Destination> destinations;
+
+	protected List<Alert> alerts;
+
+	protected List<QualityRCP> qualityRCPs;
+
+	protected List<String> rcps;
+
+	protected List<Lesion> lesions;
+
+	protected int bilanLevel;
+	private static MainActivity instance;
+
+
 	/**
 	 * Method executed at the launching of the application. Declares the different tabs,
 	 * initialize the lists and handle the saved data. <br>
@@ -267,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
 		// Récupère les messages de l'application (ceux qui ne sont pas importés depuis osgrim)
 		getMessages();
 		needClear = new BooleanVariable();
+		needClearBilan = new BooleanVariable();
 
 		// Set the tab layout
 		tabLayout = findViewById(R.id.tablayout);
@@ -275,10 +318,10 @@ public class MainActivity extends AppCompatActivity {
 		PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
 		viewPager.setAdapter(pageAdapter);
 
-		viewPager.setOffscreenPageLimit(3);
+		viewPager.setOffscreenPageLimit(4);
 		tabLayout.setupWithViewPager(viewPager);
 
-		String[] titleTabs = { messages.get("reportList"), messages.get("inputReport"), messages.get("dataManagement") };
+		String[] titleTabs = { messages.get("reportList"), messages.get("inputReport"), messages.get("inputBilan"), messages.get("dataManagement") };
 
 		// There is a warning but the NullPointerException is never raised.
 		// Il y a un warning mais NullPointerException n'est jamais levée.
@@ -298,20 +341,35 @@ public class MainActivity extends AppCompatActivity {
 		// Declares the reportAdapter for the reports list and displaying in the list tab.
 		// Déclare l'adaptateur de rapport pour la liste des rapports
 		this.reportAdapter = new ReportAdapter(this, this.reports, this.inputFragment);
+		this.reportAdapter.setClickListener(inputFragment);
+		//this.listReports.setAdapter(reportAdapter);
+
+		BilanCirListener bilanCirListener = new BilanCirListener();
+
+		if (bilanLevel == 1) {
+			this.bilanAdapter = new BilanAdapter(this, this.bilanCirList, bilanCirListener);
+		} else if (bilanLevel == 2) {
+			this.bilanAdapter = new BilanAdapter(this, this.bilanFoncList, bilanCirListener);
+		} else if (bilanLevel == 3) {
+			this.bilanAdapter = new BilanAdapter(this, this.bilanLesList, bilanCirListener);
+		}
+		this.bilanAdapter.setClickListener(bilanCirListener);
 
 		// If there is no data imported the user is stuck on the last tab until he imports the
 		// data.
 		// S'il n'y a pas de données importées l'utilisateur est bloqué au dernier onglet jusqu'à
 		// ce qu'il importe les données.
 		if (!isDataImported)
-			tabLayout.getTabAt(2).select();
+			tabLayout.getTabAt(3).select();
 
 		// If data was just imported a message is displaying to tell the user the data was
 		// imported.
 		// Si les données viennent juste d'être importées, un message s'affiche pour dire à
 		// l'utilisateur que les données ont été importées.
-		if (newImportData)
+		if (newImportData) {
 			this.makeAlertInfo(this.messages.get("validImport"));
+			newImportData = false;
+		}
 
 		/*
 		Class used when the user changes of tab.
@@ -332,8 +390,8 @@ public class MainActivity extends AppCompatActivity {
 			 */
 			@Override
 			public void onPageSelected(int position) {
-				if (!isDataImported && position != 2)
-					tabLayout.getTabAt(2).select();
+				if (!isDataImported && position != 3)
+					tabLayout.getTabAt(3).select();
 				if (isFirstTime && position == 1 && isDataImported) {
 					inputFragment.clear();
 					isFirstTime = false;
@@ -349,6 +407,8 @@ public class MainActivity extends AppCompatActivity {
 
 			}
 		});
+
+		instance = this;
 	}
 
 	/**
@@ -359,6 +419,10 @@ public class MainActivity extends AppCompatActivity {
 	public void onPause() {
 		super.onPause();
 		setStoredData();
+	}
+
+	protected static MainActivity getInstance() {
+		return instance;
 	}
 
 	/**
@@ -430,6 +494,38 @@ public class MainActivity extends AppCompatActivity {
 		editor.putBoolean("isFirstTime", isFirstTime);
 		editor.putBoolean("newImportData", newImportData);
 		editor.putBoolean("isLocalDisplay", isLocalDisplay);
+
+		String bilanCirJson = gson.toJson(bilanCirList);
+		editor.putString("bilanCirList", bilanCirJson);
+
+		String bilanFoncJson = gson.toJson(bilanFoncList);
+		editor.putString("bilanFoncList", bilanFoncJson);
+
+		String bilanLesJson = gson.toJson(bilanLesList);
+		editor.putString("bilanLesList", bilanLesJson);
+
+		String statesJson = gson.toJson(states);
+		editor.putString("states", statesJson);
+
+		String transportsJson = gson.toJson(transports);
+		editor.putString("transports", transportsJson);
+
+		String destinationsJson = gson.toJson(destinations);
+		editor.putString("destinations", destinationsJson);
+
+		String alertsJson = gson.toJson(alerts);
+		editor.putString("alerts", alertsJson);
+
+		String qualityRcpJson = gson.toJson(qualityRCPs);
+		editor.putString("qualityRCPs", qualityRcpJson);
+
+		String rcpsJson = gson.toJson(rcps);
+		editor.putString("rcps", rcpsJson);
+
+		String lesionsJson = gson.toJson(lesions);
+		editor.putString("lesions", lesionsJson);
+
+		editor.putInt("bilanLevel", bilanLevel);
 
 		editor.apply();
 	}
@@ -554,6 +650,68 @@ public class MainActivity extends AppCompatActivity {
 		isFirstTime = settings.getBoolean("isFirstTime", true);
 		newImportData = settings.getBoolean("newImportData", false);
 		isLocalDisplay = settings.getBoolean("isLocalDisplay", false);
+
+		String bilanCirJson = settings.getString("bilanCirList", "");
+		if (bilanCirJson.length() > 0) {
+			type = new TypeToken<List<BilanCir>>() {}.getType();
+			bilanCirList = gson.fromJson(bilanCirJson, type);
+		}
+
+		String bilanFoncJson = settings.getString("bilanFoncList", "");
+		if (bilanFoncJson.length() > 0) {
+			type = new TypeToken<List<BilanFonc>>() {}.getType();
+			bilanFoncList = gson.fromJson(bilanFoncJson, type);
+		}
+
+		String bilanLesJson = settings.getString("bilanLesList", "");
+		if (bilanLesJson.length() > 0) {
+			type = new TypeToken<List<BilanLes>>() {}.getType();
+			bilanLesList = gson.fromJson(bilanLesJson, type);
+		}
+
+		String statesJson = settings.getString("states", "");
+		if (statesJson.length() > 0) {
+			type = new TypeToken<List<State>>() {}.getType();
+			states = gson.fromJson(statesJson, type);
+		}
+
+		String transportsJson = settings.getString("transports", "");
+		if (transportsJson.length() > 0) {
+			type = new TypeToken<List<Transport>>() {}.getType();
+			transports = gson.fromJson(transportsJson, type);
+		}
+
+		String destinationsJson = settings.getString("destinations", "");
+		if (destinationsJson.length() > 0) {
+			type = new TypeToken<List<Destination>>() {}.getType();
+			destinations = gson.fromJson(destinationsJson, type);
+		}
+
+		String alertsJson = settings.getString("alerts", "");
+		if (alertsJson.length() > 0) {
+			type = new TypeToken<List<Alert>>() {}.getType();
+			alerts = gson.fromJson(alertsJson, type);
+		}
+
+		String qualityRcpJson = settings.getString("qualityRCPs", "");
+		if (qualityRcpJson.length() > 0) {
+			type = new TypeToken<List<QualityRCP>>() {}.getType();
+			qualityRCPs = gson.fromJson(qualityRcpJson, type);
+		}
+
+		String rcpsJson = settings.getString("rcps", "");
+		if (rcpsJson.length() > 0) {
+			type = new TypeToken<List<String>>() {}.getType();
+			rcps = gson.fromJson(rcpsJson, type);
+		}
+
+		String lesionsJson = settings.getString("lesions", "");
+		if (lesionsJson.length() > 0) {
+			type = new TypeToken<List<Lesion>>() {}.getType();
+			lesions = gson.fromJson(lesionsJson, type);
+		}
+
+		bilanLevel = settings.getInt("bilanLevel", 1);
 	}
 
 	/**
@@ -589,6 +747,18 @@ public class MainActivity extends AppCompatActivity {
 		this.details = new ArrayList<>();
 
 		this.reports = new ArrayList<>();
+
+		this.bilanCirList = new ArrayList<>();
+		this.bilanFoncList = new ArrayList<>();
+		this.bilanLesList = new ArrayList<>();
+
+		this.states = new ArrayList<>();
+		this.transports = new ArrayList<>();
+		this.destinations = new ArrayList<>();
+		this.alerts = new ArrayList<>();
+		this.qualityRCPs = new ArrayList<>();
+		this.rcps = new ArrayList<>();
+		this.lesions = new ArrayList<>();
 	}
 
 	/**
@@ -603,7 +773,7 @@ public class MainActivity extends AppCompatActivity {
 
 		try {
 			// Get the principal JSON object
-			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", false));
+			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", true));
 
 			// Check if we have to display the space category and space spinners
 			// Check si on doit afficher la liste déroulante de catégorie de local et de local
@@ -798,6 +968,56 @@ public class MainActivity extends AppCompatActivity {
 				this.details.add(newDetail);
 			}
 
+			// Get bilan level
+			bilanLevel = jObj.getInt("bilanLevel");
+
+			// Get the states
+			JSONArray states = jObj.getJSONArray("states");
+			for (int i = 0; i < states.length(); i++) {
+				JSONObject state = states.getJSONObject(i);
+				this.states.add(new State(state.getInt("id"), state.getString("name"), state.getInt("pos")));
+			}
+			this.states.add(new State(-1, "", 0));
+
+			// Get the transports
+			JSONArray transports = jObj.getJSONArray("transport");
+			for (int i = 0; i < transports.length(); i++) {
+				JSONObject transport = transports.getJSONObject(i);
+				this.transports.add(new Transport(transport.getInt("id"), transport.getString("name"), transport.getInt("pos")));
+			}
+			this.transports.add(new Transport(-1, "", 0));
+
+			// Get the destination
+			JSONArray destinations = jObj.getJSONArray("destination");
+			for (int i = 0; i < destinations.length(); i++) {
+				JSONObject destination = destinations.getJSONObject(i);
+				this.destinations.add(new Destination(destination.getInt("id"), destination.getString("name"), destination.getInt("pos")));
+			}
+			this.destinations.add(new Destination(-1, "", 0));
+
+			// Get the alerts
+			JSONArray alerts = jObj.getJSONArray("alert");
+			for (int i = 0; i < alerts.length(); i++) {
+				JSONObject alert = alerts.getJSONObject(i);
+				this.alerts.add(new Alert(alert.getInt("id"), alert.getString("name"), alert.getInt("pos")));
+			}
+			this.alerts.add(new Alert(-1, "", 0));
+
+			// Get the rcp qualities
+			JSONArray rcpQualities = jObj.getJSONArray("rcpQuality");
+			for (int i = 0; i < rcpQualities.length(); i++) {
+				JSONObject rcpQuality = rcpQualities.getJSONObject(i);
+				this.qualityRCPs.add(new QualityRCP(rcpQuality.getInt("id"), rcpQuality.getString("name"), rcpQuality.getInt("pos")));
+			}
+			this.qualityRCPs.add(new QualityRCP(-1, "", 0));
+
+			// Get the lesions
+			JSONArray lesions = jObj.getJSONArray("lesion");
+			for (int i = 0; i < lesions.length(); i++) {
+				JSONObject lesion = lesions.getJSONObject(i);
+				this.lesions.add(new Lesion(lesion.getInt("id"), lesion.getString("name")));
+			}
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return false;
@@ -832,6 +1052,7 @@ public class MainActivity extends AppCompatActivity {
 			this.messages.put("saveComplete", jObj.getString("saveComplete"));
 			this.messages.put("reportList", jObj.getString("reportList"));
 			this.messages.put("inputReport", jObj.getString("inputReport"));
+			this.messages.put("inputBilan", jObj.getString("inputBilan"));
 			this.messages.put("dataManagement", jObj.getString("dataManagement"));
 			this.messages.put("enterStartDate", jObj.getString("enterStartDate"));
 			this.messages.put("enterStartTime", jObj.getString("enterStartTime"));
@@ -840,7 +1061,9 @@ public class MainActivity extends AppCompatActivity {
 			this.messages.put("info", jObj.getString("info"));
 			this.messages.put("editReport", jObj.getString("editReport"));
 			this.messages.put("confirmDelete", jObj.getString("confirmDelete"));
+			this.messages.put("confirmDeleteBil", jObj.getString("confirmDeleteBil"));
 			this.messages.put("deleted", jObj.getString("deleted"));
+			this.messages.put("bilDeleted", jObj.getString("bilDeleted"));
 			this.messages.put("instructions", jObj.getString("instructions"));
 			this.messages.put("importData", jObj.getString("importData"));
 			this.messages.put("exportData", jObj.getString("exportData"));
@@ -849,6 +1072,12 @@ public class MainActivity extends AppCompatActivity {
 			this.messages.put("warningImport", jObj.getString("warningImport"));
 			this.messages.put("errorImport", jObj.getString("errorImport"));
 			this.messages.put("noData", jObj.getString("noData"));
+			this.messages.put("loading", jObj.getString("loading"));
+            this.messages.put("back", jObj.getString("back"));
+			this.messages.put("bilanSheet", jObj.getString("bilanSheet"));
+			this.messages.put("newBilan", jObj.getString("newBilan"));
+			this.messages.put("btndsa", jObj.getString("btndsa"));
+			this.messages.put("saveBilanComplete", jObj.getString("saveBilanComplete"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -863,7 +1092,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void getLabels() {
 		this.labels = new HashMap<>();
 		try {
-			JSONObject jObj = new JSONObject(readJSON("label.json", false));
+			JSONObject jObj = new JSONObject(readJSON("label.json", true));
 
 			this.labels.put("team", jObj.getString("team"));
 			this.labels.put("user", jObj.getString("user"));
@@ -896,6 +1125,79 @@ public class MainActivity extends AppCompatActivity {
 			this.labels.put("save", jObj.getString("save"));
 			this.labels.put("draft", jObj.getString("draft"));
 			this.labels.put("cancel", jObj.getString("cancel"));
+			this.labels.put("lname", jObj.getString("lname"));
+			this.labels.put("fname", jObj.getString("fname"));
+			this.labels.put("age", jObj.getString("age"));
+			this.labels.put("unknown", jObj.getString("unknown"));
+			this.labels.put("gender", jObj.getString("gender"));
+			this.labels.put("woman", jObj.getString("woman"));
+			this.labels.put("man", jObj.getString("man"));
+			this.labels.put("state", jObj.getString("state"));
+			this.labels.put("victimAddress", jObj.getString("victimAddress"));
+			this.labels.put("circumstances", jObj.getString("circumstances"));
+			this.labels.put("transport", jObj.getString("transport"));
+			this.labels.put("destination", jObj.getString("destination"));
+			this.labels.put("discharge", jObj.getString("discharge"));
+			this.labels.put("evaluation", jObj.getString("evaluation"));
+			this.labels.put("consciousness", jObj.getString("consciousness"));
+			this.labels.put("somnolence", jObj.getString("somnolence"));
+			this.labels.put("agitation", jObj.getString("agitation"));
+			this.labels.put("answers", jObj.getString("answers"));
+			this.labels.put("firstTime", jObj.getString("firstTime"));
+			this.labels.put("background", jObj.getString("background"));
+			this.labels.put("treatments", jObj.getString("treatments"));
+			this.labels.put("fainted", jObj.getString("fainted"));
+			this.labels.put("ventilation", jObj.getString("ventilation"));
+			this.labels.put("sweat", jObj.getString("sweat"));
+			this.labels.put("pallor", jObj.getString("pallor"));
+			this.labels.put("dsa", jObj.getString("dsa"));
+			this.labels.put("witness", jObj.getString("witness"));
+			this.labels.put("alert", jObj.getString("alert"));
+			this.labels.put("rcp", jObj.getString("rcp"));
+			this.labels.put("rcpQuality", jObj.getString("rcpQuality"));
+			this.labels.put("dsa1", jObj.getString("dsa1"));
+			this.labels.put("dsa2", jObj.getString("dsa2"));
+			this.labels.put("dsa3", jObj.getString("dsa3"));
+			this.labels.put("dsa4", jObj.getString("dsa4"));
+			this.labels.put("dsa5", jObj.getString("dsa5"));
+			this.labels.put("other", jObj.getString("other"));
+			this.labels.put("timeDSA", jObj.getString("timeDSA"));
+			this.labels.put("chocsDSA", jObj.getString("chocsDSA"));
+			this.labels.put("pulse", jObj.getString("pulse"));
+			this.labels.put("carotide", jObj.getString("carotide"));
+			this.labels.put("radial", jObj.getString("radial"));
+			this.labels.put("time", jObj.getString("time"));
+			this.labels.put("frequence", jObj.getString("frequence"));
+			this.labels.put("moves", jObj.getString("moves"));
+			this.labels.put("none", jObj.getString("none"));
+			this.labels.put("head", jObj.getString("head"));
+			this.labels.put("neck", jObj.getString("neck"));
+			this.labels.put("back", jObj.getString("back"));
+			this.labels.put("rArm", jObj.getString("rArm"));
+			this.labels.put("lArm", jObj.getString("lArm"));
+			this.labels.put("rHand", jObj.getString("rHand"));
+			this.labels.put("lHand", jObj.getString("lHand"));
+			this.labels.put("chest", jObj.getString("chest"));
+			this.labels.put("stomach", jObj.getString("stomach"));
+			this.labels.put("rLeg", jObj.getString("rLeg"));
+			this.labels.put("lLeg", jObj.getString("lLeg"));
+			this.labels.put("rFoot", jObj.getString("rFoot"));
+			this.labels.put("lFoot", jObj.getString("lFoot"));
+			this.labels.put("recap", jObj.getString("recap"));
+			this.labels.put("movesDone", jObj.getString("movesDone"));
+			this.labels.put("backSkull", jObj.getString("backSkull"));
+			this.labels.put("skull", jObj.getString("skull"));
+			this.labels.put("face", jObj.getString("face"));
+			this.labels.put("rEye", jObj.getString("rEye"));
+			this.labels.put("lEye", jObj.getString("lEye"));
+			this.labels.put("rEar", jObj.getString("rEar"));
+			this.labels.put("lEar", jObj.getString("lEar"));
+			this.labels.put("mouth", jObj.getString("mouth"));
+			this.labels.put("nose", jObj.getString("nose"));
+			this.labels.put("backBody", jObj.getString("backBody"));
+			this.labels.put("bilan1", jObj.getString("bilan1"));
+			this.labels.put("bilan2", jObj.getString("bilan2"));
+			this.labels.put("bilan3", jObj.getString("bilan3"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -955,7 +1257,7 @@ public class MainActivity extends AppCompatActivity {
 	 *              sur la popup.
 	 */
 	protected void makeAlertInfo(String msg) {
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 		alertDialog.setMessage(msg);
 
 		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, messages.get("info"),
@@ -987,26 +1289,45 @@ public class MainActivity extends AppCompatActivity {
 	 * dans le dossier download seront importées et l'application sera prête à l'usage.
 	 */
 	public void importData() {
+		/*
+		Modification 21/04
+		Popup de chargement quand on importe les données
+		 */
+
 		if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
 			requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 		} else {
-			try {
-				// TODO loading popup
-				getData();
-				getLabels();
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+			dialogBuilder.setMessage(messages.get("loading")).setCancelable(false);
+			final AlertDialog dialog = dialogBuilder.create();
+			dialog.show();
 
-				this.reportAdapter = new ReportAdapter(this, this.reports, this.inputFragment);
-				this.reportAdapter.setClickListener(this.inputFragment);
-				this.listReports.setAdapter(this.reportAdapter);
+			@SuppressLint("HandlerLeak") final Handler handler = new Handler() {
+				public void handleMessage(android.os.Message msg) {
+					if (msg.what == 1) { // success
+						dialog.dismiss();
+						isDataImported = true;
+						newImportData = true;
+						recreate();
+					} else if (msg.what == 0) { // error
+						dialog.dismiss();
+						makeAlertInfo(messages.get("errorImport"));
+					}
+				}
+			};
 
-				this.isDataImported = true;
-				this.recreate();
+			new Thread() {
+				public void run() {
+					try {
+						getData();
+						getLabels();
 
-				this.newImportData = true;
-
-			} catch (Exception e) {
-				makeAlertInfo(this.messages.get("errorImport"));
-			}
+						handler.sendEmptyMessage(1);
+					} catch (Exception e) {
+						handler.sendEmptyMessage(0);
+					}
+				}
+			}.start();
 		}
 	}
 

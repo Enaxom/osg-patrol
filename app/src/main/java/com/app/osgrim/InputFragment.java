@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -46,6 +48,7 @@ import com.app.osgrim.data.Report;
 import com.app.osgrim.data.Service;
 import com.app.osgrim.data.Space;
 import com.app.osgrim.data.SpaceCat;
+import com.app.osgrim.data.State;
 import com.app.osgrim.data.Team;
 import com.app.osgrim.data.User;
 import com.app.osgrim.data.Zone;
@@ -111,7 +114,7 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 	 * La classe MainActivity. Nécessaire car il y a toutes les listes des différents éléments
 	 * dedans.
 	 */
-	private MainActivity mainAct;
+	protected MainActivity mainAct;
 
 	/**
 	 * Calendar used to configure the EditText objects that let the user pick a date or time. <br>

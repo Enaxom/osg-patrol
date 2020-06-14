@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".BilanCirActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/titleBilanCir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/txtBilanCir"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/large_text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutBilanCir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleBilanCir">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtLName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etLName"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:textColorHint="#00FFFFFF"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentStart="true"
+                        android:inputType="textImeMultiLine"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtFName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etFName"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:textColorHint="#00FFFFFF"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentStart="true"
+                        android:inputType="textImeMultiLine"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etAge"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:textColorHint="#00FFFFFF"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentStart="true"
+                        android:inputType="textImeMultiLine"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <RadioGroup
+                        android:id="@+id/rgGender"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rbWoman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                            android:id="@+id/rbMan"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Spinner
+                        android:id="@+id/spinState"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/spinner"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="5"
+                        android:layout_marginEnd="38dp"
+                        android:maxLength="4000"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/spinner"
+                        android:scrollHorizontally="false"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtCircumstances"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etCircumstances"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="5"
+                        android:layout_marginEnd="38dp"
+                        android:maxLength="4000"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/spinner"
+                        android:scrollHorizontally="false"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtTransport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Spinner
+                        android:id="@+id/spinTransport"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/spinner"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtDestination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Spinner
+                        android:id="@+id/spinDestination"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/spinner"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbDischarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="50dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnBilanFonc"
+                    android:background="@drawable/blue_button"
+                    android:layout_width="250dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/medium_large_text"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

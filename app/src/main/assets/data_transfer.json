@@ -1711,5 +1711,128 @@
         "Ne sais pas"
       ]
     }
+  ],
+  "bilanLevel":3,
+  "states":[
+    {
+      "id":1,
+      "name":"Collaborateur",
+      "pos":1
+    },
+    {
+      "id":2,
+      "name":"Prestataire",
+      "pos":2
+    },
+    {
+      "id":3,
+      "name":"Visiteur",
+      "pos":3
+    },
+    {
+      "id":4,
+      "name":"Autre",
+      "pos":4
+    },
+    {
+      "id":5,
+      "name":"Inconnu",
+      "pos":5
+    }
+  ],
+  "transport":[
+    {
+      "id":1,
+      "name":"Voiture",
+      "pos":10
+    },
+    {
+      "id":2,
+      "name":"Vélo",
+      "pos":0
+    }
+  ],
+  "destination":[
+    {
+      "id":1,
+      "name":"Sapeurs pompiers",
+      "pos":30
+    },
+    {
+      "id":2,
+      "name":"Hôpital",
+      "pos":40
+    },
+    {
+      "id":3,
+      "name":"Laissé seul sur sa demande",
+      "pos":50
+    },
+    {
+      "id":5,
+      "name":"SAMU",
+      "pos":10
+    },
+    {
+      "id":6,
+      "name":"Famille",
+      "pos":20
+    }
+  ],
+  "alert":[
+    {
+      "id":1,
+      "name":"Immédiatement",
+      "pos":1
+    },
+    {
+      "id":2,
+      "name":"Dans les 2 à 3 minutes",
+      "pos":2
+    },
+    {
+      "id":3,
+      "name":"Dans les 5 à 10 minutes",
+      "pos":3
+    }
+  ],
+  "rcpQuality":[
+    {
+      "id":1,
+      "name":"Ventilation seule",
+      "pos":1
+    },
+    {
+      "id":2,
+      "name":"MCE seul",
+      "pos":2
+    },
+    {
+      "id":3,
+      "name":"Ventilation et MCE",
+      "pos":3
+    }
+  ],
+  "lesion":[
+    {
+      "id":1,
+      "name":"Douleur"
+    },
+    {
+      "id":2,
+      "name":"Contusion"
+    },
+    {
+      "id":3,
+      "name":"Plaie"
+    },
+    {
+      "id":4,
+      "name":"Fracture"
+    },
+    {
+      "id":5,
+      "name":"Brûlure"
+    }
   ]
 }

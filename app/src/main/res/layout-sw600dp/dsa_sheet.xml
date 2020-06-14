@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:tag="tablet"
+    android:paddingBottom="20dp"
+    tools:context=".DsaActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/clDsaSheet">
+
+        <LinearLayout
+            android:id="@+id/layoutDsaSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clDsaSheet">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtWitness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <RadioGroup
+                        android:id="@+id/rgWitness"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rbYesWit"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                            android:id="@+id/rbNoWit"
+                            android:checked="true"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtAlert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Spinner
+                        android:id="@+id/spinAlert"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/spinner"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtRCP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <RadioGroup
+                        android:id="@+id/rgRCP"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rbYesRCP"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                            android:id="@+id/rbNoRCP"
+                            android:checked="true"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtRcpQuality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="@dimen/medium_text"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Spinner
+                        android:id="@+id/spinRcpQuality"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/spinner"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dp"
+                android:layout_width="match_parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <CheckBox
+                            android:id="@+id/cbRcp1"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <CheckBox
+                            android:id="@+id/cbRcp2"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <CheckBox
+                            android:id="@+id/cbRcp3"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <CheckBox
+                            android:id="@+id/cbRcp4"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <CheckBox
+                            android:id="@+id/cbRcp5"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbRcp1"
+                    android:layout_marginStart="250dp"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbRcp2"
+                    android:layout_marginStart="250dp"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbRcp3"
+                    android:layout_marginStart="250dp"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbRcp4"
+                    android:layout_marginStart="250dp"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbRcp5"
+                    android:layout_marginStart="250dp"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout> -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etOther"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:textColorHint="#00FFFFFF"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentStart="true"
+                        android:inputType="textImeMultiLine"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View style="@style/Divider"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dp"
+                android:layout_width="match_parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtTimeDsa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etTimeDsa"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtNbChoc"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textAlignment="textEnd"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etNbChoc"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:textColorHint="#00FFFFFF"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentStart="true"
+                        android:inputType="textImeMultiLine"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtPulse"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textAlignment="textEnd"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <RadioGroup
+                        android:id="@+id/rgPulse"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rbYesPulse"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                            android:id="@+id/rbNoPulse"
+                            android:checked="true"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPulse"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/cbCarotid"
+                        android:textSize="@dimen/medium_text"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/cbRadial"
+                        android:textSize="@dimen/medium_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPulse2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginEnd="20dp"
+                        android:layout_alignParentEnd="true">
+
+                        <TextView
+                            android:id="@+id/txtTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_text" />
+
+                        <EditText
+                            android:id="@+id/etTime"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/spinner"
+                            android:maxLength="100"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="8dp"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginEnd="20dp">
+
+                        <TextView
+                            android:id="@+id/txtFrequence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_text" />
+
+                        <EditText
+                            android:id="@+id/etFrequence"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:textColorHint="#00FFFFFF"
+                            android:background="@drawable/spinner"
+                            android:maxLength="100"
+                            android:maxLines="1"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="8dp"
+                            android:imeOptions="actionDone"
+                            android:inputType="textImeMultiLine"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/txtMoves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textAlignment="textEnd"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <RadioGroup
+                        android:id="@+id/rgMoves"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rbYesMoves"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                            android:id="@+id/rbNoMoves"
+                            android:checked="true"
+                            android:textSize="@dimen/medium_text"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMoves"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtFrequenceMoves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etFrequenceMoves"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:textColorHint="#00FFFFFF"
+                        android:background="@drawable/spinner"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentStart="true"
+                        android:inputType="textImeMultiLine"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtComments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/etComments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="5"
+                        android:gravity="top"
+                        android:layout_marginEnd="38dp"
+                        android:maxLength="4000"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/spinner"
+                        android:scrollHorizontally="false"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutButtonsInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btnSubmit"
+                        android:background="@drawable/blue_button"
+                        android:layout_width="250dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/medium_large_text"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:background="@drawable/gray_button"
+                        android:layout_width="250dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/medium_large_text"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

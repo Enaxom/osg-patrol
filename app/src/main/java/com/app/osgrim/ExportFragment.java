@@ -2,6 +2,7 @@ package com.app.osgrim;
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +15,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -163,30 +166,54 @@ public class ExportFragment extends Fragment {
 	 * rapport (récupération dans la liste reports).
 	 */
 	private void exportData() {
-		reportArray = new JSONArray();
 
 		/*
 		Modification du 23/01
 		Message indiquant qu'il n'y a pas de rapport à exporter quand la liste reports est vide
+
+		Modification 21/04
+		Thread pour popup de chargement quand on fait un export
 		 */
 
-		if (mainAct.reports.size() > 0) {
-			try {
-				for (Report report : mainAct.reports)
-					reportArray.put(report.getJSONReport());
-			} catch (JSONException e) {
-				e.printStackTrace();
+		reportArray = new JSONArray();
+
+		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mainAct);
+		dialogBuilder.setMessage(mainAct.messages.get("loading")).setCancelable(false);
+		final AlertDialog dialog = dialogBuilder.create();
+		dialog.show();
+
+		@SuppressLint("HandlerLeak") final Handler handler = new Handler() {
+			public void handleMessage(android.os.Message msg) {
+				if (msg.what == 1) { // success
+					try {
+						for (Report report : mainAct.reports)
+							reportArray.put(report.getJSONReport());
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+					// When all the reports are saved in JSON in the reportArray, the JSONArray can be saved
+					// in the export file.
+					// Quand tous les rapports sont enregistrés en JSON dans le reportArray, le JSONArray
+					// peut être enregistré dans le fichier d'export.
+					writeExportFile();
+					dialog.dismiss();
+				} else if (msg.what == 0) { // error
+					dialog.dismiss();
+					mainAct.makeAlertInfo(mainAct.messages.get("noData"));
+				}
 			}
+		};
 
-			// When all the reports are saved in JSON in the reportArray, the JSONArray can be saved
-			// in the export file.
-			// Quand tous les rapports sont enregistrés en JSON dans le reportArray, le JSONArray
-			// peut être enregistré dans le fichier d'export.
-			writeExportFile();
-		} else {
-			mainAct.makeAlertInfo(mainAct.messages.get("noData"));
-		}
-
+		new Thread() {
+			public void run() {
+				if (mainAct.reports.size() > 0) {
+					handler.sendEmptyMessage(1);
+				} else {
+					handler.sendEmptyMessage(0);
+				}
+			}
+		}.start();
 	}
 
 	/**

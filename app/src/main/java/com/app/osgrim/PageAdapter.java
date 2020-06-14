@@ -49,6 +49,8 @@ class PageAdapter extends FragmentStatePagerAdapter {
 			case 1:
 				return new InputFragment();
 			case 2:
+				return new ListBilanFragment();
+			case 3:
 				return new ExportFragment();
 		}
 		return new ExportFragment();

@@ -26,6 +26,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BilanCirActivity"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_cir"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleInstance"
+            />
+        <activity android:name=".BilanFoncActivity"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_fonc"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleInstance"
+            />
+        <activity android:name=".DsaActivity"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_dsa"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleInstance"
+            />
+        <activity android:name=".BilanLesActivity"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_les"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleInstance"
+            />
     </application>
 
 </manifest>
