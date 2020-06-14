@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="Nexus 7" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8abd42a7-b549-4b4b-aa03-52db61308921" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/BilanAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/BilanCirActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/BilanCirListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/BilanFoncActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/BilanLesActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/DsaActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/ListBilanFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/Alert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/Bilan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/BilanCir.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/BilanFonc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/BilanLes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/DSA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/Destination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/Lesion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/QualityRCP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/data/Transport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/corps.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/green_btn.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/tete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/text_area.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/green_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/red_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/square_rectangle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/bilan_cir.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/bilan_fonc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/bilan_les.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/dsa_sheet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/bilan_cir.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/bilan_fonc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/bilan_les.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/dsa_sheet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_list_bilan.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/item_bilan.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/bilan_cir.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/bilan_fonc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/bilan_les.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dsa_sheet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_bilan.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_bilan.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_up_lesion.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/data_transfer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/data_transfer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/label.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/label.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/ExportFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/ExportFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/InputFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/InputFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/PageAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/osgrim/PageAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="emulator-5554" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1anMzzm9LKwx7l9aXmuzGxseRQh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="7_WSVGA_Tablet_API_25" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-04-22T15:02:31.444Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout-land" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.app.osgrim.data" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="com.app.osgrim" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.app.osgrim" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.app.osgrim" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout-land" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8abd42a7-b549-4b4b-aa03-52db61308921" name="Default Changelist" comment="" />
+      <created>1577953812183</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577953812183</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="768" y="238" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1591368493163">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state x="768" y="238" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591368493163" />
+    <state x="643" y="257" width="624" height="533" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591869242088">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state x="643" y="257" width="624" height="533" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591869242088" />
+    <state width="1396" height="350" key="GridCell.Tab.0.bottom" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.0.bottom/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.0.center" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.0.center/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.0.left" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.0.left/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.0.right" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.0.right/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.1.bottom" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.1.bottom/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.1.center" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.1.center/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.1.left" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.1.left/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+    <state width="1396" height="350" key="GridCell.Tab.1.right" timestamp="1591876523876">
+      <screen x="0" y="0" width="1920" height="1054" />
+    </state>
+    <state width="1396" height="350" key="GridCell.Tab.1.right/0.0.1920.1054/1920.0.1920.1080@0.0.1920.1054" timestamp="1591876523876" />
+  </component>
+</project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.osgrim"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="23"
+        android:targetSdkVersion="29" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:logo="@drawable/logo_osgrim"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.app.osgrim.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.app.osgrim.BilanCirActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_cir"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.app.osgrim.BilanFoncActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_fonc"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.app.osgrim.DsaActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_dsa"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.app.osgrim.BilanLesActivity"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/logo_osgrim"
+            android:label="@string/bilan_les"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan" />
+    </application>
+
+</manifest>
