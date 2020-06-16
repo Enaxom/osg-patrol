@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 	 * The Map of labels exported from Osgrim by title. <br>
 	 * La Map des libellés exportés depuis Osgrim par titre.
 	 */
-	protected Map<String, String> labels;
+	public Map<String, String> labels;
 
 	/**
 	 * The saved reports list. <br>
@@ -288,6 +288,10 @@ public class MainActivity extends AppCompatActivity {
 
 	protected List<Lesion> lesions;
 
+	protected List<BilanCir> tempBilanCir;
+	protected List<BilanFonc> tempBilanFonc;
+	protected List<BilanLes> tempBilanLes;
+
 	protected int bilanLevel;
 	private static MainActivity instance;
 
@@ -337,6 +341,10 @@ public class MainActivity extends AppCompatActivity {
 		// Initialise les listes et récupère les données sauvegardées s'il y en a.
 		initializeLists();
 		getStoredData();
+
+		bilanCirList.addAll(tempBilanCir);
+		bilanFoncList.addAll(tempBilanFonc);
+		bilanLesList.addAll(tempBilanLes);
 
 		// Declares the reportAdapter for the reports list and displaying in the list tab.
 		// Déclare l'adaptateur de rapport pour la liste des rapports
@@ -421,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
 		setStoredData();
 	}
 
-	protected static MainActivity getInstance() {
+	public static MainActivity getInstance() {
 		return instance;
 	}
 
@@ -654,19 +662,19 @@ public class MainActivity extends AppCompatActivity {
 		String bilanCirJson = settings.getString("bilanCirList", "");
 		if (bilanCirJson.length() > 0) {
 			type = new TypeToken<List<BilanCir>>() {}.getType();
-			bilanCirList = gson.fromJson(bilanCirJson, type);
+			tempBilanCir = gson.fromJson(bilanCirJson, type);
 		}
 
 		String bilanFoncJson = settings.getString("bilanFoncList", "");
 		if (bilanFoncJson.length() > 0) {
 			type = new TypeToken<List<BilanFonc>>() {}.getType();
-			bilanFoncList = gson.fromJson(bilanFoncJson, type);
+			tempBilanFonc = gson.fromJson(bilanFoncJson, type);
 		}
 
 		String bilanLesJson = settings.getString("bilanLesList", "");
 		if (bilanLesJson.length() > 0) {
 			type = new TypeToken<List<BilanLes>>() {}.getType();
-			bilanLesList = gson.fromJson(bilanLesJson, type);
+			tempBilanLes = gson.fromJson(bilanLesJson, type);
 		}
 
 		String statesJson = settings.getString("states", "");
@@ -751,6 +759,10 @@ public class MainActivity extends AppCompatActivity {
 		this.bilanCirList = new ArrayList<>();
 		this.bilanFoncList = new ArrayList<>();
 		this.bilanLesList = new ArrayList<>();
+
+		this.tempBilanCir = new ArrayList<>();
+		this.tempBilanFonc = new ArrayList<>();
+		this.tempBilanLes = new ArrayList<>();
 
 		this.states = new ArrayList<>();
 		this.transports = new ArrayList<>();

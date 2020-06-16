@@ -1,6 +1,7 @@
 package com.app.osgrim;
 
 import android.app.AlertDialog;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.osgrim.data.Bilan;
@@ -445,5 +447,10 @@ public class BilanLesActivity extends AppCompatActivity {
             llLesions.addView(cb);
             cbLes.put(l.getName(), cb);
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration config) {
+        super.onConfigurationChanged(config);
     }
 }

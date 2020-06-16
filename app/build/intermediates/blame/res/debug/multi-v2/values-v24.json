@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/morgane/Documents/Company/osg-patrol/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "D:\\Android\\Osgrim\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "/root/.gradle/caches/transforms-2/files-2.1/99505295b83f1cf0984dbe42aaedc8f6/appcompat-1.1.0-rc01/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\Morgane Cadeau\\.gradle\\caches\\transforms-2\\files-2.1\\99505295b83f1cf0984dbe42aaedc8f6\\appcompat-1.1.0-rc01\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/root/.gradle/caches/transforms-2/files-2.1/ffc4098914b91b7860907277c6a73623/media-1.0.0/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\Morgane Cadeau\\.gradle\\caches\\transforms-2\\files-2.1\\ffc4098914b91b7860907277c6a73623\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

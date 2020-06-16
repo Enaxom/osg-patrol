@@ -201,6 +201,15 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		// Required empty public constructor
 	}
 
+	// TODO
+	/*
+	Ajout saisi autre dans services
+	sous-traitant -> autre
+
+	Faire icônes boutons
+	ajouter icône sbouton export et import
+	 */
+
 	/**
 	 * onCreateView is called at the creation of the application. It gets all the layout elements
 	 * and initialize the variables. <br>

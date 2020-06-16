@@ -1,5 +1,11 @@
 package com.app.osgrim.data;
 
+import com.app.osgrim.MainActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class DSA {
@@ -154,5 +160,41 @@ public class DSA {
 
     public void setFrequenceBreath(String frequenceBreath) {
         this.frequenceBreath = frequenceBreath;
+    }
+
+    public JSONObject getJsonDsa() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("witness", getWitness());
+        obj.put("alert", getAlert().getId());
+        obj.put("rcp", getRcp());
+        obj.put("rcpQual", getQualityRCP().getId());
+        obj.put("timeDsa", getTimeDsa());
+        obj.put("other", getOther());
+        obj.put("nbChoc", getNbChoc());
+        obj.put("pulse", getPulse());
+        obj.put("carotid", getCarotid());
+        obj.put("radial", getRadial());
+        obj.put("timePulse", getTimePulse());
+        obj.put("frequencyPulse", getFrequencePulse());
+        obj.put("movesBreath", getBreath());
+        obj.put("frequencyBreath", getFrequenceBreath());
+        obj.put("comments", getComments());
+
+        JSONArray dsaJson = new JSONArray();
+
+        String[] dsa = {"VAS", "Ventilation", "Oxygeno", "MCE_Man", "MCE_Car"};
+        MainActivity mainAct = MainActivity.getInstance();
+
+        for (int i = 0; i < dsa.length; i++) {
+            int j = i + 1;
+            JSONObject dsaObj = new JSONObject();
+            int bit = getDsaChecked().contains(mainAct.labels.get("dsa" + j)) ? 1 : 0;
+            dsaObj.put(dsa[i], bit);
+            dsaJson.put(dsaObj);
+        }
+
+        obj.put("dsaChecked", dsaJson);
+        return obj;
     }
 }

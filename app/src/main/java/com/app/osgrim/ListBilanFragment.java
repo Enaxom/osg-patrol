@@ -2,6 +2,7 @@ package com.app.osgrim;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -91,4 +92,8 @@ public class ListBilanFragment extends Fragment {
 		mainAct.listBilans.setAdapter(mainAct.bilanAdapter);
 	}
 
+	@Override
+	public void onConfigurationChanged(@NonNull Configuration config) {
+		super.onConfigurationChanged(config);
+	}
 }

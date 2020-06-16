@@ -1,5 +1,9 @@
 package com.app.osgrim.data;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -94,5 +98,22 @@ public class BilanLes implements Bilan {
         }
 
         return recap.toString();
+    }
+
+    public JSONObject getBilanLesJson() throws JSONException {
+        JSONObject res = new JSONObject();
+        JSONArray les = new JSONArray();
+
+        for (String bPart : getLesions().keySet()) {
+            for (Lesion l : getLesions().get(bPart)) {
+                JSONObject obj = new JSONObject();
+                obj.put(bPart, l.getId());
+                les.put(obj);
+            }
+        }
+
+        res.put("lesions", les);
+        res.put("moves", getMovesDone());
+        return res;
     }
 }

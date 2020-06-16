@@ -1,5 +1,8 @@
 package com.app.osgrim.data;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class BilanCir implements Bilan {
 
     private String date, time;
@@ -126,5 +129,55 @@ public class BilanCir implements Bilan {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public JSONObject getJsonBilanCir() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("date", getDate());
+        obj.put("time", getTime());
+        obj.put("lname", getLname());
+        obj.put("fname", getFname());
+        obj.put("age", getAge());
+        obj.put("gender", getGender());
+        obj.put("state", getState().getId());
+        obj.put("address", getAddress());
+        obj.put("circumstances", getCircumstance());
+        obj.put("transport", getTransport().getId());
+        obj.put("destination", getDestination().getId());
+        obj.put("discharge", getDischarge());
+
+        return obj;
+    }
+
+    public JSONObject getJsonBilanFoncDef() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("eval", -1);
+        obj.put("consciousness", -1);
+        obj.put("somnolence", -1);
+        obj.put("agitation", -1);
+        obj.put("answers", -1);
+        obj.put("lostCons", -1);
+        obj.put("ventilation", -1);
+        obj.put("sweat", -1);
+        obj.put("pallor", -1);
+        obj.put("firstTime", -1);
+        obj.put("background", -1);
+        obj.put("treatment", -1);
+        obj.put("firstTimeTxt", "");
+        obj.put("backgroundText", "");
+        obj.put("treatmentText", "");
+        obj.put("dsa", 0);
+
+        return obj;
+    }
+
+    public JSONObject getJsonBilanLesDef() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("moves", "");
+
+        return obj;
     }
 }

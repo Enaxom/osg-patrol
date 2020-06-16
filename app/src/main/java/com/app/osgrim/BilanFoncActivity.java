@@ -2,6 +2,7 @@ package com.app.osgrim;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.osgrim.data.Bilan;
@@ -253,7 +255,7 @@ public class BilanFoncActivity extends AppCompatActivity {
         cbDSA.setText(mainAct.labels.get("dsa"));
 
         final List<String> eval = new ArrayList<>();
-        for (int i = 1; i <=10; i++)
+        for (int i = 0; i <=10; i++)
             eval.add("" + i);
         eval.add("");
 
@@ -436,5 +438,10 @@ public class BilanFoncActivity extends AppCompatActivity {
             cbDSA.setChecked(false);
             btnDsa.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration config) {
+        super.onConfigurationChanged(config);
     }
 }

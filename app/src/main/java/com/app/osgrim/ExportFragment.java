@@ -25,10 +25,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.osgrim.data.Bilan;
+import com.app.osgrim.data.BilanCir;
+import com.app.osgrim.data.BilanFonc;
+import com.app.osgrim.data.BilanLes;
 import com.app.osgrim.data.Report;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -60,6 +65,10 @@ public class ExportFragment extends Fragment {
 	 * Le JSONArray qui contient tous les rapports en JSONObject. C'est utilisé dans 2 méthodes donc c'est une variable de classe.
 	 */
 	private JSONArray reportArray;
+
+	private JSONArray bilanArray;
+
+	private JSONArray dataArray;
 
 	/**
 	 * Never called but needed for the class structure. <br>
@@ -175,6 +184,10 @@ public class ExportFragment extends Fragment {
 		Thread pour popup de chargement quand on fait un export
 		 */
 
+		dataArray = new JSONArray();
+
+		bilanArray = new JSONArray();
+
 		reportArray = new JSONArray();
 
 		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mainAct);
@@ -188,6 +201,63 @@ public class ExportFragment extends Fragment {
 					try {
 						for (Report report : mainAct.reports)
 							reportArray.put(report.getJSONReport());
+
+						JSONObject objReport = new JSONObject();
+						objReport.put("reports", reportArray);
+						dataArray.put(objReport);
+
+						JSONObject objLevel = new JSONObject();
+						JSONObject bilanObj = new JSONObject();
+
+						switch (mainAct.bilanLevel) {
+							case 1:
+								objLevel.put("bilanLevel", 1);
+								for (Bilan bil : mainAct.bilanCirList) {
+									BilanCir bilan = (BilanCir) bil;
+									JSONObject obj = bilan.getJsonBilanCir();
+									bilanObj.put("bilanCir", obj);
+									obj = bilan.getJsonBilanFoncDef();
+									bilanObj.put("bilanFonc", obj);
+									obj = bilan.getJsonBilanLesDef();
+									bilanObj.put("bilanLes", obj);
+									bilanArray.put(bilanObj);
+								}
+								break;
+							case 2:
+								objLevel.put("bilanLevel", 2);
+								for (Bilan bil : mainAct.bilanFoncList) {
+									BilanFonc bilan = (BilanFonc) bil;
+									JSONObject obj = bilan.getBilanCir().getJsonBilanCir();
+									bilanObj.put("bilanCir", obj);
+									obj = bilan.getJsonBilanFonc();
+									bilanObj.put("bilanFonc", obj);
+									obj = bilan.getJsonBilanLesDef();
+									bilanObj.put("bilanLes", obj);
+									bilanArray.put(bilanObj);
+								}
+								break;
+							case 3:
+								objLevel.put("bilanLevel", 3);
+								for (Bilan bil : mainAct.bilanLesList) {
+									BilanLes bilan = (BilanLes) bil;
+									JSONObject obj = bilan.getBilanCir().getJsonBilanCir();
+									bilanObj.put("bilanCir", obj);
+									obj = bilan.getBilanFonc().getJsonBilanFonc();
+									bilanObj.put("bilanFonc", obj);
+									obj = bilan.getBilanLesJson();
+									bilanObj.put("bilanLes", obj);
+									bilanArray.put(bilanObj);
+								}
+								break;
+							default:
+								break;
+						}
+
+						JSONObject objBilan = new JSONObject();
+						objBilan.put("bilans", bilanArray);
+
+						dataArray.put(objBilan);
+
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -207,7 +277,7 @@ public class ExportFragment extends Fragment {
 
 		new Thread() {
 			public void run() {
-				if (mainAct.reports.size() > 0) {
+				if (mainAct.reports.size() > 0 || mainAct.bilanCirList.size() > 0 || mainAct.bilanFoncList.size() > 0 || mainAct.bilanLesList.size() > 0) {
 					handler.sendEmptyMessage(1);
 				} else {
 					handler.sendEmptyMessage(0);
@@ -239,7 +309,7 @@ public class ExportFragment extends Fragment {
 				Writer output = new BufferedWriter(new FileWriter(file));
 				// Write the JSON array containing all the reports in the file
 				// Ecriture du JSON array qui contient tous les rapports dans le fichier
-				output.write(reportArray.toString());
+				output.write(dataArray.toString());
 				output.close();
 
 				/*

@@ -1,5 +1,8 @@
 package com.app.osgrim.data;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class BilanFonc implements Bilan {
 
     private BilanCir bilanCir;
@@ -188,5 +191,41 @@ public class BilanFonc implements Bilan {
 
     public void setDsaSheet(DSA dsaSheet) {
         this.dsaSheet = dsaSheet;
+    }
+
+    public JSONObject getJsonBilanFonc() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("eval", getEval());
+        obj.put("consciousness", getConsciousness());
+        obj.put("somnolence", getSomnolence());
+        obj.put("agitation", getAgitation());
+        obj.put("answers", getAnswers());
+        obj.put("lostCons", getFainted());
+        obj.put("ventilation", getVentilation());
+        obj.put("sweat", getSweat());
+        obj.put("pallor", getPallor());
+        obj.put("firstTime", getFirstTime());
+        obj.put("background", getBackground());
+        obj.put("treatment", getTreatment());
+        obj.put("firstTimeTxt", getNotFirstTime());
+        obj.put("backgroundText", getNotBackground());
+        obj.put("treatmentText", getNotTreatment());
+        obj.put("dsa", getDsa());
+        if (getDsa() == 1) {
+            obj.put("dsaSheet", getDsaSheet().getJsonDsa());
+        } else {
+            obj.put("dsaSheet", "");
+        }
+
+        return obj;
+    }
+
+    public JSONObject getJsonBilanLesDef() throws JSONException {
+        JSONObject obj = new JSONObject();
+
+        obj.put("moves", "");
+
+        return obj;
     }
 }
