@@ -1,5 +1,7 @@
 package com.app.osgrim.data;
 
+import android.widget.EditText;
+
 /**
  * The Service class defines a service. <br>
  * La classe Service définit un service.
@@ -14,6 +16,9 @@ public class Service extends Element {
      * Vrai si le service est sélectionné, faux sinon.
      */
     private boolean selected;
+
+    private boolean hasOther;
+    private String other;
 
     /**
      * Creates a service. A service has an id and a name. <br>
@@ -42,5 +47,21 @@ public class Service extends Element {
      */
     public boolean isSelected() {
         return this.selected;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
+    }
+
+    public boolean isHasOther() {
+        return hasOther;
+    }
+
+    public void setHasOther(boolean hasOther) {
+        this.hasOther = hasOther;
     }
 }

@@ -617,6 +617,8 @@ public class Report {
 		// associés.
 		JSONArray serviceCatArray = new JSONArray();
 
+		String other = "-1";
+
 		for (Map.Entry<Integer, List<Service>> entry : services.entrySet()) {
 			Integer idSCat = entry.getKey();
 			List<Service> serviceList = entry.getValue();
@@ -625,14 +627,20 @@ public class Report {
 			serviceObj.put("idServiceCat", idSCat);
 			JSONArray servicesArray = new JSONArray();
 
-			for (Service s : serviceList)
+			for (Service s : serviceList) {
 				servicesArray.put(s.getId());
+				if (s.isHasOther()) {
+					other = s.getOther();
+				}
+			}
 
 			serviceObj.put("idServices", servicesArray);
 			serviceCatArray.put(serviceObj);
 		}
 
 		obj.put("serviceCat", serviceCatArray);
+
+		obj.put("otherService", other);
 
 		JSONArray participantsArray = new JSONArray();
 		for (Intervenant inter : intervenants) {

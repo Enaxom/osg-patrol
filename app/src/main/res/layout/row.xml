@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <CheckBox
         android:id="@+id/checkService"
@@ -23,5 +29,29 @@
         android:textColor="@color/black"
         android:textSize="@dimen/medium_text" >
     </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etOther"
+            android:layout_width="210dp"
+            android:layout_height="0dp"
+            android:textColorHint="#00FFFFFF"
+            android:background="@drawable/spinner"
+            android:maxLength="100"
+            android:layout_gravity="top"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:imeOptions="actionDone"
+            android:inputType="textImeMultiLine"
+            tools:ignore="Suspicious0dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

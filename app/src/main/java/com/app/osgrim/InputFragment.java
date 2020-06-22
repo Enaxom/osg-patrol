@@ -193,11 +193,16 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 	 */
 	private Report reportToEdit;
 
+	private static InputFragment instance;
+
+	private EditText etOther;
+
 	/**
 	 * Class constructor. Not used.
 	 * Constructeur de la classe. Non utilisé.
 	 */
 	public InputFragment() {
+		instance = this;
 		// Required empty public constructor
 	}
 
@@ -302,8 +307,31 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		// On donne la référence de cette classe à MainActivity
 		mainAct.setInputFragment(this);
 
+		etOther = inputView.findViewById(R.id.etOther);
+
 		// The view
 		return inputView;
+	}
+
+	public static InputFragment getInstance() {
+		return instance;
+	}
+
+	public void displayEditText() {
+		LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(210, 30);
+		lparams.setMargins(15, 0, 0, 15);
+		etOther.setLayoutParams(lparams);
+	}
+
+	public void hideEditText() {
+		LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(210, 0);
+		etOther.setLayoutParams(lparams);
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		clear();
 	}
 
 	/**
@@ -931,6 +959,14 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		 */
 		List<Service> servicesOne = servAdapterOne.getSelectedItems();
 		List<Service> serviceTwo = servAdapterTwo.getSelectedItems();
+
+		for (Service s : serviceTwo) {
+			Log.d("blbl", s.getId() + " -> " + s.getName());
+			if (s.isHasOther()) {
+				s.setOther(etOther.getText().toString());
+			}
+		}
+
 		List<Intervenant> intervenants = interAdapter.getSelectedItems();
 		List<Incident> incidents = (incidentAdapter != null) ? incidentAdapter.getSelectedItems() : new ArrayList<Incident>();
 
@@ -1065,6 +1101,7 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		etTimeStart.setText("");
 		etDateEnd.setText("");
 		etTimeEnd.setText("");
+		etOther.setText("");
 
 		/*
 		All the checked elements are unchecked.
@@ -1166,8 +1203,14 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		if (servicesTwoSelected == null) servicesTwoSelected = new ArrayList<>();
 		for (int i = 0; i < servAdapterTwo.getItemCount(); i++) {
 			for (Service service : servicesTwoSelected) {
-				if (service.getId() == servAdapterTwo.getItem(i).getId())
+				if (service.getId() == servAdapterTwo.getItem(i).getId()) {
 					servAdapterTwo.setSelected(i, true);
+
+					if (service.getName().equals("Autre")) {
+						displayEditText();
+						etOther.setText(service.getOther());
+					}
+				}
 			}
 		}
 
@@ -1396,6 +1439,14 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		Report report = mainAct.reports.get(position);
 		clear();
 		displayReport(report);
+	}
+
+	public static void displayEtOther() {
+
+	}
+
+	public static void hideEtOther() {
+
 	}
 
 	/**

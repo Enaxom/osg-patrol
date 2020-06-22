@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.Writer;
 
@@ -306,10 +307,18 @@ public class ExportFragment extends Fragment {
 				File file =
 						new File(Environment.getExternalStorageDirectory() + File.separator + "Download" + File.separator + "data_export.txt");
 
+				/*
+				if (file.exists())
+					file.delete();
+
+				file.createNewFile();
+				 */
+
 				Writer output = new BufferedWriter(new FileWriter(file));
 				// Write the JSON array containing all the reports in the file
 				// Ecriture du JSON array qui contient tous les rapports dans le fichier
-				output.write(dataArray.toString());
+				String dataArrayString = dataArray.toString();
+				output.write(dataArrayString);
 				output.close();
 
 				/*

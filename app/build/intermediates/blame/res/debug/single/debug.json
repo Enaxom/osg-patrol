@@ -20,16 +20,16 @@
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_bilan_fonc.xml.flat",
-        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\bilan_fonc.xml"
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_bilan.xml.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\item_bilan.xml"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_tete.png.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable-v24\\tete.png"
     },
     {
-        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_bilan.xml.flat",
-        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\item_bilan.xml"
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_bilan_fonc.xml.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\bilan_fonc.xml"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -58,6 +58,10 @@
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_export.png.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable\\btn_export.png"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -94,6 +98,10 @@
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_green_btn.xml.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable-v24\\green_btn.xml"
+    },
+    {
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_import.png.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable\\btn_import.png"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_spinner.xml.flat",

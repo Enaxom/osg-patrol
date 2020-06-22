@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="osg-patrol/app" />
-      <module fileurl="file://$PROJECT_DIR$/osg-patrol.iml" filepath="$PROJECT_DIR$/osg-patrol.iml" group="osg-patrol" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Osgrim.iml" filepath="$PROJECT_DIR$/.idea/modules/Osgrim.iml" group="Osgrim" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Osgrim/app" />
     </modules>
   </component>
 </project>

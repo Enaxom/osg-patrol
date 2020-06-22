@@ -2,11 +2,14 @@ package com.app.osgrim;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.renderscript.ScriptGroup;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -129,27 +132,59 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 	 *                    liste des services.
 	 */
 	@Override
-	public void onBindViewHolder(ServiceViewHolder holder, final int position) {
+	public void onBindViewHolder(final ServiceViewHolder holder, final int position) {
 		holder.checkbox.setTag(position);
 		holder.bindService(list.get(position));
 
 		final CheckBox cb = holder.checkbox;
 		final TextView tv = holder.text;
 
+		if (cb.isChecked() && tv.getText().toString().equals("Autre")) {
+			InputFragment inputFragment = InputFragment.getInstance();
+			inputFragment.displayEditText();
+		}
+
 		holder.text.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				cb.setChecked(!cb.isChecked());
 				list.get(position).setSelected(cb.isChecked());
+				Log.d("blbl", "" + list.get(position).getName() + "  " + list.get(position).isSelected());
+
+				if (cb.isChecked() && list.get(position).getName().equals("Autre")) {
+					// Display input
+					list.get(position).setHasOther(true);
+					InputFragment inputFragment = InputFragment.getInstance();
+					inputFragment.displayEditText();
+				} else if (list.get(position).getName().equals("Autre")) {
+					list.get(position).setHasOther(false);
+					InputFragment inputFragment = InputFragment.getInstance();
+					inputFragment.hideEditText();
+				}
 			}
 		});
 
 		holder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+				list.get(position).setSelected(cb.isChecked());
 				if (cb.isChecked()) {
 					tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
+
+					if (list.get(position).getName().equals("Autre")) {
+						// Display input
+						list.get(position).setHasOther(true);
+						InputFragment inputFragment = InputFragment.getInstance();
+						inputFragment.displayEditText();
+					}
 				} else {
+					if (list.get(position).getName().equals("Autre")) {
+						// Display input
+						list.get(position).setHasOther(false);
+						InputFragment inputFragment = InputFragment.getInstance();
+						inputFragment.hideEditText();
+					}
+
 					tv.setTypeface(null, Typeface.NORMAL);
 				}
 			}
@@ -213,9 +248,11 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 	List<Service> getSelectedItems() {
 		List<Service> services = new ArrayList<>();
 
-		for (Service s : list)
-			if (s.isSelected())
+		for (Service s : list) {
+			if (s.isSelected()) {
 				services.add(s);
+			}
+		}
 
 		return services;
 	}
