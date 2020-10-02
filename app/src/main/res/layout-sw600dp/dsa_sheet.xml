@@ -588,14 +588,14 @@
                         android:layout_height="30dp"
                         android:textColorHint="#00FFFFFF"
                         android:background="@drawable/spinner"
-                        android:maxLength="100"
+                        android:maxLength="3"
                         android:maxLines="1"
                         android:layout_alignParentBottom="true"
                         android:layout_marginTop="8dp"
                         android:layout_marginStart="8dp"
                         android:imeOptions="actionDone"
                         android:layout_alignParentStart="true"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="numberPassword"/>
 
                 </RelativeLayout>
 
@@ -776,13 +776,13 @@
                             android:layout_height="30dp"
                             android:textColorHint="#00FFFFFF"
                             android:background="@drawable/spinner"
-                            android:maxLength="100"
+                            android:maxLength="3"
                             android:maxLines="1"
                             android:layout_gravity="top"
                             android:layout_marginTop="8dp"
                             android:layout_marginStart="8dp"
                             android:imeOptions="actionDone"
-                            android:inputType="textImeMultiLine"/>
+                            android:inputType="numberPassword"/>
 
                     </LinearLayout>
 
@@ -890,14 +890,14 @@
                         android:layout_height="30dp"
                         android:textColorHint="#00FFFFFF"
                         android:background="@drawable/spinner"
-                        android:maxLength="100"
+                        android:maxLength="3"
                         android:maxLines="1"
                         android:layout_gravity="top"
                         android:layout_marginTop="8dp"
                         android:layout_marginStart="8dp"
                         android:imeOptions="actionDone"
                         android:layout_alignParentStart="true"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="numberPassword"/>
 
                 </RelativeLayout>
 

@@ -20,16 +20,16 @@
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_bilan.xml.flat",
-        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\item_bilan.xml"
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_bilan_fonc.xml.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\bilan_fonc.xml"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_tete.png.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable-v24\\tete.png"
     },
     {
-        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_bilan_fonc.xml.flat",
-        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\bilan_fonc.xml"
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_bilan.xml.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout\\item_bilan.xml"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -48,6 +48,10 @@
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable\\header_blue.xml"
     },
     {
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_export.png.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable\\btn_export.png"
+    },
+    {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_square_rectangle.xml.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable\\square_rectangle.xml"
     },
@@ -58,10 +62,6 @@
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_export.png.flat",
-        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\drawable\\btn_export.png"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -248,12 +248,12 @@
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout-sw600dp\\item_report.xml"
     },
     {
-        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp_fragment_export.xml.flat",
-        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout-sw600dp\\fragment_export.xml"
-    },
-    {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp_fragment_export.xml.flat",
+        "source": "D:\\Android\\Osgrim\\app\\src\\main\\res\\layout-sw600dp\\fragment_export.xml"
     },
     {
         "merged": "D:\\Android\\Osgrim\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_background.png.flat",

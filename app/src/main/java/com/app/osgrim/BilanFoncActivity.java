@@ -134,22 +134,30 @@ public class BilanFoncActivity extends AppCompatActivity {
 
         selectValue(spinEval, bilanFoncObj.getEval());
 
-        rbNoCons.setChecked(bilanFoncObj.getConsciousness() == 0);
-        rbYesCons.setChecked(bilanFoncObj.getConsciousness() == 1);
+        rbNoCons.setChecked(bilanFoncObj.getConsciousness() == 1);
+        rbYesCons.setChecked(bilanFoncObj.getConsciousness() == 0);
 
-        rbYesSom.setChecked(bilanFoncObj.getSomnolence() == 1);
-        rbYesAgi.setChecked(bilanFoncObj.getAgitation() == 1);
-        rbNoAns.setChecked(bilanFoncObj.getAnswers() == 0);
-        rbYesLost.setChecked(bilanFoncObj.getAnswers() == 1);
-        rbNoLost.setChecked(bilanFoncObj.getAnswers() == 0);
-        rbYesVent.setChecked(bilanFoncObj.getAnswers() == 1);
-        rbNoVent.setChecked(bilanFoncObj.getAnswers() == 0);
-        rbYesSweat.setChecked(bilanFoncObj.getAnswers() == 1);
-        rbYesPalor.setChecked(bilanFoncObj.getPallor() == 1);
+        rbYesSom.setChecked(bilanFoncObj.getSomnolence() == 0);
+        rbNoSom.setChecked(bilanFoncObj.getSomnolence() == 1);
+        rbYesAgi.setChecked(bilanFoncObj.getAgitation() == 0);
+        rbNoAgi.setChecked(bilanFoncObj.getAgitation() == 1);
+        rbYesAns.setChecked(bilanFoncObj.getAnswers() == 0);
+        rbNoAns.setChecked(bilanFoncObj.getAnswers() == 1);
+        rbYesLost.setChecked(bilanFoncObj.getFainted() == 0);
+        rbNoLost.setChecked(bilanFoncObj.getFainted() == 1);
+        rbYesVent.setChecked(bilanFoncObj.getVentilation() == 0);
+        rbNoVent.setChecked(bilanFoncObj.getVentilation() == 1);
+        rbYesSweat.setChecked(bilanFoncObj.getSweat() == 0);
+        rbNoSweat.setChecked(bilanFoncObj.getSweat() == 1);
+        rbYesPalor.setChecked(bilanFoncObj.getPallor() == 0);
+        rbNoPalor.setChecked(bilanFoncObj.getPallor() == 1);
 
-        rbNoFirst.setChecked(bilanFoncObj.getFirstTime() == 0);
-        rbYesBackground.setChecked(bilanFoncObj.getBackground() == 1);
-        rbYesTreatment.setChecked(bilanFoncObj.getTreatment() == 1);
+        rbNoFirst.setChecked(bilanFoncObj.getFirstTime() == 1);
+        rbYesFirst.setChecked(bilanFoncObj.getFirstTime() == 0);
+        rbYesBackground.setChecked(bilanFoncObj.getBackground() == 0);
+        rbNoBackground.setChecked(bilanFoncObj.getBackground() == 1);
+        rbYesTreatment.setChecked(bilanFoncObj.getTreatment() == 0);
+        rbNoTreatment.setChecked(bilanFoncObj.getTreatment() == 1);
         etFirstTime.setText(bilanFoncObj.getNotFirstTime());
         etBackground.setText(bilanFoncObj.getNotBackground());
         etTreatment.setText(bilanFoncObj.getNotTreatment());
@@ -371,46 +379,58 @@ public class BilanFoncActivity extends AppCompatActivity {
         }
 
         if (rbYesCons.isChecked())
-            bilanFoncObj.setConsciousness(1);
-        else if (rbNoCons.isChecked())
             bilanFoncObj.setConsciousness(0);
+        else if (rbNoCons.isChecked())
+            bilanFoncObj.setConsciousness(1);
 
         if (rbYesSom.isChecked())
+            bilanFoncObj.setSomnolence(0);
+        else if (rbNoSom.isChecked())
             bilanFoncObj.setSomnolence(1);
 
         if (rbYesAgi.isChecked())
+            bilanFoncObj.setAgitation(0);
+        else if (rbNoAgi.isChecked())
             bilanFoncObj.setAgitation(1);
 
         if (rbNoAns.isChecked())
+            bilanFoncObj.setAnswers(1);
+        else if (rbYesAns.isChecked())
             bilanFoncObj.setAnswers(0);
 
         if (rbYesLost.isChecked())
-            bilanFoncObj.setFainted(1);
-        else if (rbNoLost.isChecked())
             bilanFoncObj.setFainted(0);
+        else if (rbNoLost.isChecked())
+            bilanFoncObj.setFainted(1);
 
         if (rbYesVent.isChecked())
-            bilanFoncObj.setVentilation(1);
-        else if (rbNoVent.isChecked())
             bilanFoncObj.setVentilation(0);
+        else if (rbNoVent.isChecked())
+            bilanFoncObj.setVentilation(1);
 
         if (rbYesSweat.isChecked())
-            bilanFoncObj.setSweat(1);
-        else if (rbNoSweat.isChecked())
             bilanFoncObj.setSweat(0);
+        else if (rbNoSweat.isChecked())
+            bilanFoncObj.setSweat(1);
 
         if (rbYesPalor.isChecked())
-            bilanFoncObj.setPallor(1);
-        else if (rbNoPalor.isChecked())
             bilanFoncObj.setPallor(0);
+        else if (rbNoPalor.isChecked())
+            bilanFoncObj.setPallor(1);
 
         if (rbNoFirst.isChecked())
+            bilanFoncObj.setFirstTime(1);
+        else if (rbYesFirst.isChecked())
             bilanFoncObj.setFirstTime(0);
 
         if (rbYesBackground.isChecked())
+            bilanFoncObj.setBackground(0);
+        else if (rbNoBackground.isChecked())
             bilanFoncObj.setBackground(1);
 
         if (rbYesTreatment.isChecked())
+            bilanFoncObj.setTreatment(0);
+        else if (rbNoTreatment.isChecked())
             bilanFoncObj.setTreatment(1);
 
         bilanFoncObj.setNotFirstTime(etFirstTime.getText().toString());

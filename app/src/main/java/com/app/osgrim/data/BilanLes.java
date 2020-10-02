@@ -1,5 +1,7 @@
 package com.app.osgrim.data;
 
+import com.app.osgrim.MainActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -100,7 +102,7 @@ public class BilanLes implements Bilan {
         return recap.toString();
     }
 
-    public JSONObject getBilanLesJson() throws JSONException {
+    public JSONObject getBilanLesJson2() throws JSONException {
         JSONObject res = new JSONObject();
         JSONArray les = new JSONArray();
 
@@ -112,6 +114,26 @@ public class BilanLes implements Bilan {
             }
         }
 
+        res.put("lesions", les);
+        res.put("moves", getMovesDone());
+        return res;
+    }
+
+    public JSONObject getBilanLesJson() throws JSONException {
+        JSONObject res = new JSONObject();
+        JSONArray bodyParts = new JSONArray();
+        JSONArray les = new JSONArray();
+
+        MainActivity mainAct = MainActivity.getInstance();
+
+        for (String bPart : getLesions().keySet()) {
+            for (Lesion l : getLesions().get(bPart)) {
+                bodyParts.put(mainAct.bodyIds.get(bPart));
+                les.put(l.getId());
+            }
+        }
+
+        res.put("bodyParts", bodyParts);
         res.put("lesions", les);
         res.put("moves", getMovesDone());
         return res;

@@ -2,6 +2,7 @@ package com.app.osgrim;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,17 +151,26 @@ public class IntervenantAdapter extends RecyclerView.Adapter<IntervenantAdapter.
 		final TextView tvTeam = holder.textTeam;
 		final TextView tvInter = holder.textInter;
 
-		holder.itemView.setOnClickListener(new View.OnClickListener() {
+		holder.textTeam.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				cb.setChecked(!cb.isChecked());
-				list.get(position).setSelected(cb.isChecked());
+				//list.get(position).setSelected(cb.isChecked());
+			}
+		});
+
+		holder.textInter.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				cb.setChecked(!cb.isChecked());
+				//list.get(position).setSelected(cb.isChecked());
 			}
 		});
 
 		holder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+				list.get(position).setSelected(cb.isChecked());
 				if (cb.isChecked()) {
 					tvTeam.setTypeface(tvTeam.getTypeface(), Typeface.BOLD);
 					tvInter.setTypeface(tvInter.getTypeface(), Typeface.BOLD);
@@ -234,5 +244,14 @@ public class IntervenantAdapter extends RecyclerView.Adapter<IntervenantAdapter.
 				intervenants.add(i);
 
 		return intervenants;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+	@Override
+	public int getItemViewType(int position) {
+		return position;
 	}
 }

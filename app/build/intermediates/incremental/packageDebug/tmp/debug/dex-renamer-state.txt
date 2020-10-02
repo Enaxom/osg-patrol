@@ -1,4 +1,4 @@
-#Mon Jun 22 16:12:41 CEST 2020
+#Wed Sep 30 18:51:30 CEST 2020
 base.0=D\:\\Android\\Osgrim\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

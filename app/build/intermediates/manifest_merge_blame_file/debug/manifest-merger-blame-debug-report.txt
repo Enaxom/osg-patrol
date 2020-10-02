@@ -22,7 +22,7 @@
 15        android:allowBackup="true"
 15-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:10:9-35
 16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.1.0-rc02] C:\Users\Morgane Cadeau\.gradle\caches\transforms-2\files-2.1\fcdd44c5024d34bb833264c6d5a974c4\core-1.1.0-rc02\AndroidManifest.xml:24:18-86
+16-->[androidx.core:core:1.1.0-rc02] C:\Users\Morgane Cadeau\.gradle\caches\transforms-2\files-2.1\7f665cba3575022d20a0596b92e2bb9a\core-1.1.0-rc02\AndroidManifest.xml:24:18-86
 17        android:debuggable="true"
 18        android:extractNativeLibs="false"
 19        android:icon="@mipmap/ic_launcher"
@@ -35,88 +35,87 @@
 22-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:14:9-54
 23        android:supportsRtl="true"
 23-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:15:9-35
-24        android:testOnly="true"
-25        android:theme="@style/AppTheme" >
-25-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:16:9-40
-26        <activity
-26-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:18:9-28:20
-27            android:name="com.app.osgrim.MainActivity"
-27-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:18:19-47
-28            android:configChanges="orientation|screenSize"
-28-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:21:13-59
-29            android:icon="@drawable/logo_osgrim"
-29-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:19:13-49
-30            android:label="@string/app_name"
-30-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:20:13-45
-31            android:windowSoftInputMode="adjustPan" >
-31-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:22:13-52
-32            <intent-filter>
-32-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:23:13-27:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:24:17-69
-33-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:24:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:26:17-77
-35-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:26:27-74
-36            </intent-filter>
-37        </activity>
-38        <activity
-38-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:29:9-35:15
-39            android:name="com.app.osgrim.BilanCirActivity"
-39-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:29:19-51
-40            android:configChanges="orientation|screenSize"
-40-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:32:13-59
-41            android:icon="@drawable/logo_osgrim"
-41-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:30:13-49
-42            android:label="@string/bilan_cir"
-42-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:31:13-46
-43            android:launchMode="singleInstance"
-43-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:34:13-48
-44            android:windowSoftInputMode="adjustPan" />
-44-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:33:13-52
-45        <activity
-45-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:36:9-42:15
-46            android:name="com.app.osgrim.BilanFoncActivity"
-46-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:36:19-52
-47            android:configChanges="orientation|screenSize"
-47-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:39:13-59
-48            android:icon="@drawable/logo_osgrim"
-48-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:37:13-49
-49            android:label="@string/bilan_fonc"
-49-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:38:13-47
-50            android:launchMode="singleInstance"
-50-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:41:13-48
-51            android:windowSoftInputMode="adjustPan" />
-51-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:40:13-52
-52        <activity
-52-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:43:9-49:15
-53            android:name="com.app.osgrim.DsaActivity"
-53-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:43:19-46
-54            android:configChanges="orientation|screenSize"
-54-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:46:13-59
-55            android:icon="@drawable/logo_osgrim"
-55-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:44:13-49
-56            android:label="@string/bilan_dsa"
-56-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:45:13-46
-57            android:launchMode="singleInstance"
-57-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:48:13-48
-58            android:windowSoftInputMode="adjustPan" />
-58-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:47:13-52
-59        <activity
-59-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:50:9-56:15
-60            android:name="com.app.osgrim.BilanLesActivity"
-60-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:50:19-51
-61            android:configChanges="orientation|screenSize"
-61-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:53:13-59
-62            android:icon="@drawable/logo_osgrim"
-62-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:51:13-49
-63            android:label="@string/bilan_les"
-63-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:52:13-46
-64            android:launchMode="singleInstance"
-64-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:55:13-48
-65            android:windowSoftInputMode="adjustPan" />
-65-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:54:13-52
-66    </application>
-67
-68</manifest>
+24        android:theme="@style/AppTheme" >
+24-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:16:9-40
+25        <activity
+25-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:18:9-28:20
+26            android:name="com.app.osgrim.MainActivity"
+26-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:18:19-47
+27            android:configChanges="orientation|screenSize"
+27-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:21:13-59
+28            android:icon="@drawable/logo_osgrim"
+28-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:19:13-49
+29            android:label="@string/app_name"
+29-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:20:13-45
+30            android:windowSoftInputMode="adjustPan" >
+30-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:22:13-52
+31            <intent-filter>
+31-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:23:13-27:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:24:17-69
+32-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:24:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:26:17-77
+34-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:26:27-74
+35            </intent-filter>
+36        </activity>
+37        <activity
+37-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:29:9-35:15
+38            android:name="com.app.osgrim.BilanCirActivity"
+38-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:29:19-51
+39            android:configChanges="orientation|screenSize"
+39-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:32:13-59
+40            android:icon="@drawable/logo_osgrim"
+40-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:30:13-49
+41            android:label="@string/bilan_cir"
+41-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:31:13-46
+42            android:launchMode="singleInstance"
+42-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:34:13-48
+43            android:windowSoftInputMode="adjustPan" />
+43-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:33:13-52
+44        <activity
+44-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:36:9-42:15
+45            android:name="com.app.osgrim.BilanFoncActivity"
+45-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:36:19-52
+46            android:configChanges="orientation|screenSize"
+46-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:39:13-59
+47            android:icon="@drawable/logo_osgrim"
+47-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:37:13-49
+48            android:label="@string/bilan_fonc"
+48-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:38:13-47
+49            android:launchMode="singleInstance"
+49-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:41:13-48
+50            android:windowSoftInputMode="adjustPan" />
+50-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:40:13-52
+51        <activity
+51-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:43:9-49:15
+52            android:name="com.app.osgrim.DsaActivity"
+52-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:43:19-46
+53            android:configChanges="orientation|screenSize"
+53-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:46:13-59
+54            android:icon="@drawable/logo_osgrim"
+54-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:44:13-49
+55            android:label="@string/bilan_dsa"
+55-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:45:13-46
+56            android:launchMode="singleInstance"
+56-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:48:13-48
+57            android:windowSoftInputMode="adjustPan" />
+57-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:47:13-52
+58        <activity
+58-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:50:9-56:15
+59            android:name="com.app.osgrim.BilanLesActivity"
+59-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:50:19-51
+60            android:configChanges="orientation|screenSize"
+60-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:53:13-59
+61            android:icon="@drawable/logo_osgrim"
+61-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:51:13-49
+62            android:label="@string/bilan_les"
+62-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:52:13-46
+63            android:launchMode="singleInstance"
+63-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:55:13-48
+64            android:windowSoftInputMode="adjustPan" />
+64-->D:\Android\Osgrim\app\src\main\AndroidManifest.xml:54:13-52
+65    </application>
+66
+67</manifest>

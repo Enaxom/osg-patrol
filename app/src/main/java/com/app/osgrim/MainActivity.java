@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -61,10 +62,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -292,8 +296,12 @@ public class MainActivity extends AppCompatActivity {
 	protected List<BilanFonc> tempBilanFonc;
 	protected List<BilanLes> tempBilanLes;
 
+	public Map<String, String> bodyIds;
+
 	protected int bilanLevel;
 	private static MainActivity instance;
+
+	protected String fileName;
 
 
 	/**
@@ -374,9 +382,9 @@ public class MainActivity extends AppCompatActivity {
 		// imported.
 		// Si les données viennent juste d'être importées, un message s'affiche pour dire à
 		// l'utilisateur que les données ont été importées.
+
 		if (newImportData) {
 			this.makeAlertInfo(this.messages.get("validImport"));
-			newImportData = false;
 		}
 
 		/*
@@ -400,6 +408,7 @@ public class MainActivity extends AppCompatActivity {
 			public void onPageSelected(int position) {
 				if (!isDataImported && position != 3)
 					tabLayout.getTabAt(3).select();
+
 				if (isFirstTime && position == 1 && isDataImported) {
 					inputFragment.clear();
 					isFirstTime = false;
@@ -415,8 +424,70 @@ public class MainActivity extends AppCompatActivity {
 
 			}
 		});
+		createFile();
 
 		instance = this;
+	}
+
+	private void createFile() {
+		if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
+			requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+			// If the permissions aren't given, the onRequestPermissionsResult() will be
+			// called and the writeExportFile() method will be called when the permissions
+			// are given.
+			// Si les droits ne sont pas donnés, la méthode onRequestPermissionsResult() sera
+			// appelée et writeExportFile() sera appelée quand les permissions sont données.
+		} else {
+			File file =
+					new File(Environment.getExternalStorageDirectory() + File.separator + "Download" + File.separator + "test.txt");
+
+				/*
+				if (file.exists())
+					file.delete();
+
+				file.createNewFile();
+				 */
+
+			Writer output = null;
+			try {
+				output = new BufferedWriter(new FileWriter(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// Write the JSON array containing all the reports in the file
+			// Ecriture du JSON array qui contient tous les rapports dans le fichier
+			String dataString = "test fichier";
+			try {
+				output.write(dataString);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try {
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			scanFile(this, file);
+		}
+
+		/*
+		Important to scanFile when we create a file otherwise it can be hidden when the
+		device is plugged to a computer. If we create a json file instead of a text file,
+		the scanFile() method delete the json file created on the tablet.
+		It's why we create a text file for the exportation.
+		 */
+		/*
+		Important d'utiliser scanFile quand on créé un fichier sinon il peuyt être caché
+		quand l'appareil est branché à un PC. Si on créé un fichier json à la place d'un
+		fichier texte, la méthode scanFile() supprime le fichier json créé sur la
+		tablette. C'est pourquoi on créé un fichier texte pour l'exportation.
+		 */
+
+	}
+
+	private void scanFile(Context ctxt, File f) {
+		MediaScannerConnection.scanFile(ctxt, new String[] {f.getAbsolutePath()}, new String[] {""}, null);
 	}
 
 	/**
@@ -532,6 +603,9 @@ public class MainActivity extends AppCompatActivity {
 
 		String lesionsJson = gson.toJson(lesions);
 		editor.putString("lesions", lesionsJson);
+
+		String bodyIdsJson = gson.toJson(bodyIds);
+		editor.putString("bodyIds", bodyIdsJson);
 
 		editor.putInt("bilanLevel", bilanLevel);
 
@@ -719,6 +793,12 @@ public class MainActivity extends AppCompatActivity {
 			lesions = gson.fromJson(lesionsJson, type);
 		}
 
+		String bodyIdsJson = settings.getString("bodyIds", "");
+		if (bodyIdsJson.length() > 0) {
+			type = new TypeToken<HashMap<String, String>>() {}.getType();
+			bodyIds = gson.fromJson(bodyIdsJson, type);
+		}
+
 		bilanLevel = settings.getInt("bilanLevel", 1);
 	}
 
@@ -771,6 +851,7 @@ public class MainActivity extends AppCompatActivity {
 		this.qualityRCPs = new ArrayList<>();
 		this.rcps = new ArrayList<>();
 		this.lesions = new ArrayList<>();
+		this.bodyIds = new HashMap<>();
 	}
 
 	/**
@@ -785,7 +866,7 @@ public class MainActivity extends AppCompatActivity {
 
 		try {
 			// Get the principal JSON object
-			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", true));
+			JSONObject jObj = new JSONObject(readJSON("data_transfer.json", false));
 
 			// Check if we have to display the space category and space spinners
 			// Check si on doit afficher la liste déroulante de catégorie de local et de local
@@ -1104,7 +1185,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void getLabels() {
 		this.labels = new HashMap<>();
 		try {
-			JSONObject jObj = new JSONObject(readJSON("label.json", true));
+			JSONObject jObj = new JSONObject(readJSON("label.json", false));
 
 			this.labels.put("team", jObj.getString("team"));
 			this.labels.put("user", jObj.getString("user"));
@@ -1182,6 +1263,8 @@ public class MainActivity extends AppCompatActivity {
 			this.labels.put("frequence", jObj.getString("frequence"));
 			this.labels.put("moves", jObj.getString("moves"));
 			this.labels.put("none", jObj.getString("none"));
+
+
 			this.labels.put("head", jObj.getString("head"));
 			this.labels.put("neck", jObj.getString("neck"));
 			this.labels.put("back", jObj.getString("back"));
@@ -1195,8 +1278,6 @@ public class MainActivity extends AppCompatActivity {
 			this.labels.put("lLeg", jObj.getString("lLeg"));
 			this.labels.put("rFoot", jObj.getString("rFoot"));
 			this.labels.put("lFoot", jObj.getString("lFoot"));
-			this.labels.put("recap", jObj.getString("recap"));
-			this.labels.put("movesDone", jObj.getString("movesDone"));
 			this.labels.put("backSkull", jObj.getString("backSkull"));
 			this.labels.put("skull", jObj.getString("skull"));
 			this.labels.put("face", jObj.getString("face"));
@@ -1206,6 +1287,32 @@ public class MainActivity extends AppCompatActivity {
 			this.labels.put("lEar", jObj.getString("lEar"));
 			this.labels.put("mouth", jObj.getString("mouth"));
 			this.labels.put("nose", jObj.getString("nose"));
+
+			bodyIds.put(labels.get("head"), "btnTete");
+			bodyIds.put(labels.get("neck"), "btnCou");
+			bodyIds.put(labels.get("back"), "btnDos");
+			bodyIds.put(labels.get("rArm"), "btnMSupD");
+			bodyIds.put(labels.get("lArm"), "btnMSupG");
+			bodyIds.put(labels.get("rHand"), "btnMainD");
+			bodyIds.put(labels.get("lHand"), "btnMainG");
+			bodyIds.put(labels.get("chest"), "btnThorax");
+			bodyIds.put(labels.get("stomach"), "btnVentre");
+			bodyIds.put(labels.get("rLeg"), "btnMInfD");
+			bodyIds.put(labels.get("lLeg"), "btnMInfG");
+			bodyIds.put(labels.get("rFoot"), "btnPiedD");
+			bodyIds.put(labels.get("lFoot"), "BtnPiedG");
+			bodyIds.put(labels.get("backSkull"), "btnCraneA");
+			bodyIds.put(labels.get("skull"), "btnCrane");
+			bodyIds.put(labels.get("face"), "btnFace");
+			bodyIds.put(labels.get("rEye"), "btnOeilD");
+			bodyIds.put(labels.get("lEye"), "btnOeilG");
+			bodyIds.put(labels.get("rEar"), "btnOreilleD");
+			bodyIds.put(labels.get("lEar"), "btnOreilleG");
+			bodyIds.put(labels.get("mouth"), "btnBouche");
+			bodyIds.put(labels.get("nose"), "btnNez");
+
+			this.labels.put("recap", jObj.getString("recap"));
+			this.labels.put("movesDone", jObj.getString("movesDone"));
 			this.labels.put("backBody", jObj.getString("backBody"));
 			this.labels.put("bilan1", jObj.getString("bilan1"));
 			this.labels.put("bilan2", jObj.getString("bilan2"));
@@ -1229,7 +1336,9 @@ public class MainActivity extends AppCompatActivity {
 	@SuppressWarnings("unused")
 	protected String readJSON(String name, boolean isAsset) {
 		String json;
-		File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath() + File.separator + name);
+		//File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath() + File.separator + name);
+		File file = new File(Environment.getExternalStorageDirectory().getPath() + "/osgrim" + File.separator + name);
+		fileName = Environment.getExternalStorageDirectory().getPath() + "/osgrim" + File.separator + name;
 		try {
 			// Read from asset or download
 			InputStream is = isAsset ? getAssets().open(name) : new FileInputStream(file);
@@ -1324,6 +1433,7 @@ public class MainActivity extends AppCompatActivity {
 					} else if (msg.what == 0) { // error
 						dialog.dismiss();
 						makeAlertInfo(messages.get("errorImport"));
+						makeAlertInfo(fileName);
 					}
 				}
 			};
@@ -1340,6 +1450,7 @@ public class MainActivity extends AppCompatActivity {
 					}
 				}
 			}.start();
+
 		}
 	}
 

@@ -148,8 +148,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 			@Override
 			public void onClick(View view) {
 				cb.setChecked(!cb.isChecked());
-				list.get(position).setSelected(cb.isChecked());
-				Log.d("blbl", "" + list.get(position).getName() + "  " + list.get(position).isSelected());
 
 				if (cb.isChecked() && list.get(position).getName().equals("Autre")) {
 					// Display input
@@ -255,5 +253,14 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 		}
 
 		return services;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+	@Override
+	public int getItemViewType(int position) {
+		return position;
 	}
 }

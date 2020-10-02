@@ -3,10 +3,13 @@ package com.app.osgrim;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.graphics.drawable.GradientDrawable;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 
@@ -71,6 +74,10 @@ public class ExportFragment extends Fragment {
 
 	private JSONArray dataArray;
 
+	private JSONObject dataObject;
+
+	private Button btnImport, btnExport;
+
 	/**
 	 * Never called but needed for the class structure. <br>
 	 * Jamais appelé mais nécessaire pour la structure de la classe.
@@ -99,14 +106,22 @@ public class ExportFragment extends Fragment {
 		// Get the elements of the view
 		// Récupération des éléments de la vue
 		TextView tvInstructions = exportView.findViewById(R.id.tvInstructions);
-		Button btnImport = exportView.findViewById(R.id.btnImport);
-		Button btnExport = exportView.findViewById(R.id.btnExport);
+		btnImport = exportView.findViewById(R.id.btnImport);
+		btnExport = exportView.findViewById(R.id.btnExport);
 
 		// Set the text of the different component
 		// Fixe le texte des différents composants
 		tvInstructions.setText(mainAct.messages.get("instructions"));
 		btnImport.setText(mainAct.messages.get("importData"));
 		btnExport.setText(mainAct.messages.get("exportData"));
+
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			btnImport.setBackgroundResource(R.drawable.blue_button);
+			btnExport.setBackgroundResource(R.drawable.blue_button);
+		} else {
+			btnImport.setBackgroundResource(R.drawable.btn_import);
+			btnExport.setBackgroundResource(R.drawable.btn_export);
+		}
 
 		// Define the click listener of the import and export buttons
 		// Définie l'écouteur de click des boutons d'importation et d'exportation
@@ -186,6 +201,7 @@ public class ExportFragment extends Fragment {
 		 */
 
 		dataArray = new JSONArray();
+		dataObject = new JSONObject();
 
 		bilanArray = new JSONArray();
 
@@ -203,17 +219,14 @@ public class ExportFragment extends Fragment {
 						for (Report report : mainAct.reports)
 							reportArray.put(report.getJSONReport());
 
-						JSONObject objReport = new JSONObject();
-						objReport.put("reports", reportArray);
-						dataArray.put(objReport);
+						dataObject.put("reports", reportArray);
 
-						JSONObject objLevel = new JSONObject();
-						JSONObject bilanObj = new JSONObject();
+
 
 						switch (mainAct.bilanLevel) {
 							case 1:
-								objLevel.put("bilanLevel", 1);
 								for (Bilan bil : mainAct.bilanCirList) {
+									JSONObject bilanObj = new JSONObject();
 									BilanCir bilan = (BilanCir) bil;
 									JSONObject obj = bilan.getJsonBilanCir();
 									bilanObj.put("bilanCir", obj);
@@ -225,8 +238,8 @@ public class ExportFragment extends Fragment {
 								}
 								break;
 							case 2:
-								objLevel.put("bilanLevel", 2);
 								for (Bilan bil : mainAct.bilanFoncList) {
+									JSONObject bilanObj = new JSONObject();
 									BilanFonc bilan = (BilanFonc) bil;
 									JSONObject obj = bilan.getBilanCir().getJsonBilanCir();
 									bilanObj.put("bilanCir", obj);
@@ -238,8 +251,8 @@ public class ExportFragment extends Fragment {
 								}
 								break;
 							case 3:
-								objLevel.put("bilanLevel", 3);
 								for (Bilan bil : mainAct.bilanLesList) {
+									JSONObject bilanObj = new JSONObject();
 									BilanLes bilan = (BilanLes) bil;
 									JSONObject obj = bilan.getBilanCir().getJsonBilanCir();
 									bilanObj.put("bilanCir", obj);
@@ -253,11 +266,8 @@ public class ExportFragment extends Fragment {
 							default:
 								break;
 						}
-
-						JSONObject objBilan = new JSONObject();
-						objBilan.put("bilans", bilanArray);
-
-						dataArray.put(objBilan);
+						dataObject.put("bilanLevel", mainAct.bilanLevel);
+						dataObject.put("bilans", bilanArray);
 
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -317,8 +327,8 @@ public class ExportFragment extends Fragment {
 				Writer output = new BufferedWriter(new FileWriter(file));
 				// Write the JSON array containing all the reports in the file
 				// Ecriture du JSON array qui contient tous les rapports dans le fichier
-				String dataArrayString = dataArray.toString();
-				output.write(dataArrayString);
+				String dataString = dataObject.toString();
+				output.write(dataString);
 				output.close();
 
 				/*
@@ -376,5 +386,17 @@ public class ExportFragment extends Fragment {
 			if (permissions[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE))
 				writeExportFile(); // The permission WRITE_EXTERNAL_STORAGE is granted so the
 		// exportation method can be called.
+	}
+
+	@Override
+	public void onConfigurationChanged(@NonNull Configuration config) {
+		super.onConfigurationChanged(config);
+		if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			btnImport.setBackgroundResource(R.drawable.blue_button);
+			btnExport.setBackgroundResource(R.drawable.blue_button);
+		} else {
+			btnImport.setBackgroundResource(R.drawable.btn_import);
+			btnExport.setBackgroundResource(R.drawable.btn_export);
+		}
 	}
 }

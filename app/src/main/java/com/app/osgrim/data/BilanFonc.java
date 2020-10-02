@@ -28,14 +28,14 @@ public class BilanFonc implements Bilan {
         this.bilanCir = bilanCir;
         eval = -1;
         consciousness = -1;
-        somnolence = 0;
-        agitation = 0;
-        answers = 1;
-        firstTime = 1;
-        background = 0;
-        treatment = 0;
-        sweat = 0;
-        pallor = 0;
+        somnolence = 1;
+        agitation = 1;
+        answers = 0;
+        firstTime = 0;
+        background = 1;
+        treatment = 1;
+        sweat = 1;
+        pallor = 1;
         fainted = -1;
         ventilation = -1;
         dsa = 0;
@@ -208,14 +208,14 @@ public class BilanFonc implements Bilan {
         obj.put("firstTime", getFirstTime());
         obj.put("background", getBackground());
         obj.put("treatment", getTreatment());
-        obj.put("firstTimeTxt", getNotFirstTime());
-        obj.put("backgroundText", getNotBackground());
-        obj.put("treatmentText", getNotTreatment());
+        obj.put("notFirstTime", getNotFirstTime());
+        obj.put("notBackground", getNotBackground());
+        obj.put("notTreatment", getNotTreatment());
         obj.put("dsa", getDsa());
         if (getDsa() == 1) {
             obj.put("dsaSheet", getDsaSheet().getJsonDsa());
         } else {
-            obj.put("dsaSheet", "");
+            obj.put("dsaSheet", new JSONObject());
         }
 
         return obj;

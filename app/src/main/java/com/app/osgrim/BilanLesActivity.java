@@ -200,6 +200,8 @@ public class BilanLesActivity extends AppCompatActivity {
 
         Map<String, List<Lesion>> lesions = bilanLes.getLesions();
 
+        //for ()
+
         if (lesions.get(mainAct.labels.get("neck")) != null)
             btnNeck.setBackgroundResource(R.drawable.red_button);
         if (lesions.get(mainAct.labels.get("back")) != null)
@@ -225,30 +227,37 @@ public class BilanLesActivity extends AppCompatActivity {
         if (lesions.get(mainAct.labels.get("rFoot")) != null)
             btnRFoot.setBackgroundResource(R.drawable.red_button);
         if (lesions.get(mainAct.labels.get("backSkull")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("backSkull")).size();
             btnBackSkull.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }
         if (lesions.get(mainAct.labels.get("skull")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("skull")).size();
             btnSkull.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }
         if (lesions.get(mainAct.labels.get("face")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("face")).size();
             btnFace.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }
         if (lesions.get(mainAct.labels.get("rEye")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("rEye")).size();
             btnREye.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }
         if (lesions.get(mainAct.labels.get("lEye")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("lEye")).size();
             btnLEye.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }
         if (lesions.get(mainAct.labels.get("mouth")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("mouth")).size();
             btnMouth.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }
         if (lesions.get(mainAct.labels.get("nose")) != null) {
+            nbHeadLesions += lesions.get(mainAct.labels.get("nose")).size();
             btnNose.setBackgroundResource(R.drawable.red_button);
             btnHead.setBackgroundResource(R.drawable.red_button);
         }

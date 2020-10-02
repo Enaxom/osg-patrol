@@ -293,13 +293,14 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
 			@Override
 			public void onClick(View view) {
 				cb.setChecked(!cb.isChecked());
-				list.get(position).setSelected(cb.isChecked());
+				//list.get(position).setSelected(cb.isChecked());
 			}
 		});
 
 		holder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+				list.get(position).setSelected(cb.isChecked());
 				if (cb.isChecked()) {
 					tvIncident.setTypeface(tvIncident.getTypeface(), Typeface.BOLD);
 					tvNbr.setTypeface(tvNbr.getTypeface(), Typeface.BOLD);
@@ -363,5 +364,14 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
 				incidents.add(i);
 
 		return incidents;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+	@Override
+	public int getItemViewType(int position) {
+		return position;
 	}
 }

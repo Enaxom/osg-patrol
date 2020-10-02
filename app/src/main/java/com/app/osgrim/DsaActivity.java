@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -260,6 +261,9 @@ public class DsaActivity extends AppCompatActivity {
             display(dsa);
         }
 
+        frequency.setTransformationMethod(new NumericKeyBoardTransformationMethod());
+        frequencyMoves.setTransformationMethod(new NumericKeyBoardTransformationMethod());
+        nbChocs.setTransformationMethod(new NumericKeyBoardTransformationMethod());
     }
 
     private void save() {
@@ -374,4 +378,13 @@ public class DsaActivity extends AppCompatActivity {
         comments.setText(dsa.getComments());
     }
 
+    private class NumericKeyBoardTransformationMethod extends PasswordTransformationMethod {
+        @Override
+        public CharSequence getTransformation(CharSequence source, View view) {
+            return source;
+        }
+    }
+
 }
+
+

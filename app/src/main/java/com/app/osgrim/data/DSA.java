@@ -171,14 +171,14 @@ public class DSA {
         obj.put("rcpQual", getQualityRCP().getId());
         obj.put("timeDsa", getTimeDsa());
         obj.put("other", getOther());
-        obj.put("nbChoc", getNbChoc());
+        obj.put("nbChoc", Integer.valueOf(getNbChoc()));
         obj.put("pulse", getPulse());
         obj.put("carotid", getCarotid());
         obj.put("radial", getRadial());
         obj.put("timePulse", getTimePulse());
-        obj.put("frequencyPulse", getFrequencePulse());
+        obj.put("frequencyPulse", Integer.valueOf(getFrequencePulse()));
         obj.put("movesBreath", getBreath());
-        obj.put("frequencyBreath", getFrequenceBreath());
+        obj.put("frequencyBreath", Integer.valueOf(getFrequenceBreath()));
         obj.put("comments", getComments());
 
         JSONArray dsaJson = new JSONArray();

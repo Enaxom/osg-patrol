@@ -283,6 +283,12 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		layoutInput = inputView.findViewById(R.id.layoutButtonsInput);
 		layoutEdit = inputView.findViewById(R.id.layoutButtonsEdit);
 
+		// We give the reference of this class to the MainActivity
+		// On donne la référence de cette classe à MainActivity
+		mainAct.setInputFragment(this);
+
+		etOther = inputView.findViewById(R.id.etOther);
+
 		// The initialization of all the elements are dispatched in multiple methods
 		// L'initialisation de tous les éléments est réalisée dans plusieurs méthodes
 		if (mainAct.isDataImported) {
@@ -302,12 +308,6 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 			// l'onglet saisie de rapport.
 			mainAct.reportAdapter.setClickListener(this);
 		}
-
-		// We give the reference of this class to the MainActivity
-		// On donne la référence de cette classe à MainActivity
-		mainAct.setInputFragment(this);
-
-		etOther = inputView.findViewById(R.id.etOther);
 
 		// The view
 		return inputView;
@@ -1107,17 +1107,23 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		All the checked elements are unchecked.
 		Tous les éléments sélectionnés sont désélectionnés.
 		 */
-		for (int i = 0; i < servAdapterOne.getItemCount(); i++)
-			servAdapterOne.setSelected(i, false);
-		servAdapterOne.notifyDataSetChanged();
+		if (servAdapterOne != null) {
+			for (int i = 0; i < servAdapterOne.getItemCount(); i++)
+				servAdapterOne.setSelected(i, false);
+			servAdapterOne.notifyDataSetChanged();
+		}
 
-		for (int i = 0; i < servAdapterTwo.getItemCount(); i++)
-			servAdapterTwo.setSelected(i, false);
-		servAdapterTwo.notifyDataSetChanged();
+		if (servAdapterTwo != null) {
+			for (int i = 0; i < servAdapterTwo.getItemCount(); i++)
+				servAdapterTwo.setSelected(i, false);
+			servAdapterTwo.notifyDataSetChanged();
+		}
 
-		for (int i = 0; i < interAdapter.getItemCount(); i++)
-			interAdapter.setSelected(i, false);
-		interAdapter.notifyDataSetChanged();
+		if (interAdapter != null) {
+			for (int i = 0; i < interAdapter.getItemCount(); i++)
+				interAdapter.setSelected(i, false);
+			interAdapter.notifyDataSetChanged();
+		}
 
 		if (incidentAdapter != null) {
 			for (int i = 0; i < incidentAdapter.getItemCount(); i++)
@@ -1126,9 +1132,11 @@ public class InputFragment extends Fragment implements OnItemClickListener {
 		}
 
 		etComment.setText("");
-		for (Spinner spinner : detailSpinners) {
-			int idBlank = spinner.getAdapter().getCount();
-			spinner.setSelection(idBlank);
+		if (detailSpinners != null) {
+			for (Spinner spinner : detailSpinners) {
+				int idBlank = spinner.getAdapter().getCount();
+				spinner.setSelection(idBlank);
+			}
 		}
 
 		scrollView.fullScroll(ScrollView.FOCUS_UP);
